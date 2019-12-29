@@ -10,12 +10,6 @@ auto_cancel:
   running:
     when: 'true'
 
-global_job_config:
-  prologue:
-    commands:
-      - checkout
-      - nvm use
-
 blocks:
   - name: Setup
     task:
