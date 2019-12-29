@@ -16,6 +16,7 @@ blocks:
       jobs:
         - name: yarn install and cache
           commands:
+            - checkout
             - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
             - yarn
             - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock) node_modules
@@ -24,6 +25,7 @@ blocks:
       jobs:
         - name: yarn lint
           commands:
+            - checkout
             - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
             - yarn lint:ci
   - name: Style Lint
@@ -31,6 +33,7 @@ blocks:
       jobs:
         - name: yarn lint:css
           commands:
+            - checkout
             - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
             - yarn lint:css
   - name: Tests
@@ -38,5 +41,6 @@ blocks:
       jobs:
         - name: yarn test
           commands:
+            - checkout
             - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
             - yarn test:ci
