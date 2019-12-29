@@ -1,19 +1,48 @@
 version: v1.0
-name: Test MyApp
+name: Harvest Public Team Report
+
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
+
+auto_cancel:
+  running:
+    when: 'true'
+
+global_job_config:
+  prologue:
+    commands:
+      - checkout
+      - nvm use
+
 blocks:
-  - name: Test
+  - name: Setup
     task:
       jobs:
-        - name: Test
+        - name: yarn install and cache
           commands:
-            - checkout
-            - sem-version node 12
-            - cache restore
-            - npm install
-            - cache store
-            - npm run build --if-present
-            - npm test
+            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+            - yarn
+            - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock) node_modules
+  - name: ES Lint
+    task:
+      jobs:
+        - name: yarn lint
+          commands:
+            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+            - yarn lint:ci
+  - name: Style Lint
+    task:
+      jobs:
+        - name: yarn lint:css
+          commands:
+            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+            - yarn lint:css
+  - name: Tests
+    task:
+      jobs:
+        - name: yarn test
+          commands:
+            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+            - yarn test:ci
