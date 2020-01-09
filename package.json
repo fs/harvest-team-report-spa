@@ -6,7 +6,6 @@
     "dev": "NODE_ENV=development node server.js",
     "build": "next build",
     "start": "next start -p $PORT",
-    "eject": "react-scripts eject",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx pages templates components",
     "lint:ci": "eslint --ext .js,.jsx,.ts,.tsx pages templates components",
     "lint:css": "stylelint ./**/*.tsx",
