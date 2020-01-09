@@ -15,6 +15,6 @@
     "noEmit": true,
     "jsx": "preserve"
   },
-  "include": ["pages", "templates", "components"],
+  "include": ["pages", "components/templates", "components"],
   "exclude": ["node_modules"]
 }

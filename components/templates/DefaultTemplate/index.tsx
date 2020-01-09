@@ -1,7 +1,6 @@
 import React from 'react';
 
-// @ts-ignore
-const DefaultTemplate = ({ children }) => {
+const DefaultTemplate = ({ children }: any) => {
   return <div>{children}</div>;
 };
 

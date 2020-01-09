@@ -6,7 +6,7 @@
     "airbnb",
     "prettier"
   ],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "globals": {
     "document": true,
     "localStorage": true,
@@ -15,9 +15,14 @@
     "fetch": true
   },
   "plugins": [
+    "@typescript-eslint/eslint-plugin",
     "prettier",
     "react-hooks"
   ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
     "react/jsx-one-expression-per-line": "off",
