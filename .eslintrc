@@ -44,7 +44,8 @@
     "import/extensions": ["error", {
       "ts": "never",
       "tsx": "never"
-    }]
+    }],
+    "react/jsx-props-no-spreading": 0
   },
   "settings": {
     "import/resolver": {
