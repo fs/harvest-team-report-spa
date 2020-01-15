@@ -4,7 +4,9 @@
   },
   "extends": [
     "airbnb",
-    "prettier"
+    "prettier",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "globals": {
@@ -45,7 +47,8 @@
       "ts": "never",
       "tsx": "never"
     }],
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "@typescript-eslint/explicit-function-return-type": 0
   },
   "settings": {
     "import/resolver": {
