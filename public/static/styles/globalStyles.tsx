@@ -1,7 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
+import { RobotoCyrillicExt, RobotoCyrillic, RobotoLatin, RobotoLatinExt } from '../fonts/Roboto';
 
 const GlobalStyles = createGlobalStyle`
-  @import "../fonts/roboto.css";
+  ${RobotoCyrillicExt};
+  ${RobotoCyrillic};
+  ${RobotoLatin};
+  ${RobotoLatinExt};
   body {
     min-height: 100vh;
     margin: 0;
