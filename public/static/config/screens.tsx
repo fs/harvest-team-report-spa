@@ -1,6 +1,6 @@
 import Breakpoints from './breakpoints';
 
-enum Screens {
+export enum Screens {
   xs = 'xs',
   sm = 'sm',
   md = 'md',
@@ -10,7 +10,7 @@ enum Screens {
 
 enum Width {
   min = 'min-width:',
-  max = '(max-width:',
+  max = 'max-width:',
 }
 
 export const upFrom = {
@@ -28,9 +28,9 @@ export const downFrom = {
 };
 
 export const only = {
-  [Screens.xs]: `(${downFrom[Screens.xs]}`,
-  [Screens.sm]: `(${upFrom[Screens.sm]}) and ${downFrom[Screens.sm]}`,
-  [Screens.md]: `(${upFrom[Screens.md]}) and ${downFrom[Screens.md]}`,
-  [Screens.lg]: `(${upFrom[Screens.lg]}) and ${downFrom[Screens.lg]}`,
-  [Screens.sm]: `(${upFrom[Screens.xl]})`,
+  [Screens.xs]: `${downFrom[Screens.xs]}`,
+  [Screens.sm]: `${upFrom[Screens.sm]} and ${downFrom[Screens.sm]}`,
+  [Screens.md]: `${upFrom[Screens.md]} and ${downFrom[Screens.md]}`,
+  [Screens.lg]: `${upFrom[Screens.lg]} and ${downFrom[Screens.lg]}`,
+  [Screens.xl]: `${upFrom[Screens.xl]}`,
 };
