@@ -12,4 +12,11 @@ export default {
     [Screens.lg]: '960px',
     [Screens.xl]: '1200px',
   },
+  screens: {
+    xs: Screens.xs,
+    sm: Screens.sm,
+    md: Screens.md,
+    lg: Screens.lg,
+    xl: Screens.xl,
+  },
 };
