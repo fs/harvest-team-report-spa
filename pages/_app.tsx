@@ -1,9 +1,11 @@
 import App from 'next/app';
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider as StyledThemeProvidera } from 'styled-components';
+import { ThemeProvider as MateriralThemeProvider } from '@material-ui/core/styles';
 import Head from 'next/head';
 import GlobalStyles from '../public/static/styles/globalStyles';
 import Theme from '../public/static/styles/theme';
+import MaterialTheme from '../public/static/styles/materialTheme';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }: any) {
@@ -19,13 +21,15 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <ThemeProvider theme={Theme}>
-        <GlobalStyles />
-        <Head>
-          <title>Team Report</title>
-        </Head>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <StyledThemeProvidera theme={Theme}>
+        <MateriralThemeProvider theme={MaterialTheme}>
+          <GlobalStyles />
+          <Head>
+            <title>Team Report</title>
+          </Head>
+          <Component {...pageProps} />
+        </MateriralThemeProvider>
+      </StyledThemeProvidera>
     );
   }
 }
