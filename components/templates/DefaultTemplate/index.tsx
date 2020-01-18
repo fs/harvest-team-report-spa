@@ -1,7 +1,3 @@
-import React from 'react';
-
-const DefaultTemplate = ({ children }: any) => {
-  return <div>{children}</div>;
-};
+import DefaultTemplate from './DefaultTemplate';
 
 export default DefaultTemplate;
