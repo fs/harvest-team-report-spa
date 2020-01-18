@@ -1,33 +1,31 @@
 import React from 'react';
+import { Class } from '@babel/types';
 import Table from '../components/organisms/Table';
 import DefaultTemplate from '../components/templates/DefaultTemplate';
+import EmployeesService from '../services/EmployeesService';
+import { Employee } from '../public/static/config/types/employee';
+import { getEmployeesTableData } from '../public/static/utils/getTableData';
 
-const Home = () => {
-  const employees = [
-    {
-      name: 'Renas Sitdikov',
-      capacity: 40,
-      hoursOnWeek: {
-        total: 42,
-        billable: 36,
-        nonBillable: 6,
-      },
-    },
-    {
-      name: 'Elon Musk',
-      capacity: 160,
-      hoursOnWeek: {
-        total: 200,
-        billable: 200,
-        nonBillable: 0,
-      },
-    },
-  ];
+const Home = ({ employees }: { employees: Employee[] }) => {
+  const employeesTableData = getEmployeesTableData(employees);
   return (
     <DefaultTemplate>
-      <Table />
+      <Table data={employeesTableData} />
     </DefaultTemplate>
   );
+};
+
+Home.getInitialProps = async (ctx: { apiService: Class }) => {
+  const { apiService } = ctx;
+  const employeesService = new EmployeesService(apiService);
+  let employees: Employee[] = [];
+
+  try {
+    employees = await employeesService.retrieveAllEmployees();
+  } catch (err) {
+    console.error(err);
+  }
+  return { employees };
 };
 
 export default Home;
