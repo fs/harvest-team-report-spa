@@ -1,10 +1,21 @@
 import React from 'react';
+import Link from 'next/link';
+import styled from 'styled-components';
+import { Divider } from '@material-ui/core';
+import { HomePageQuery } from '../../../public/static/config/types/Queries';
+import useWeekInfo from '../../../hooks/useWeekInfo';
 
-const WeekInfo = ({ week, year }: { week?: string; year?: string }) => {
+const Wrapper = styled.div``;
+
+const WeekInfo = ({ query }: { query: HomePageQuery }) => {
+  const { weekString, nextWeekLink, prevWeekLink } = useWeekInfo(query);
   return (
-    <div>
-      {week && `week: ${week}`} {week && year && `,`} {year && `year: ${year}`}
-    </div>
+    <Wrapper>
+      <Link href={prevWeekLink}>PREV</Link>
+      <div>This Week: {weekString}</div>
+      <Link href={nextWeekLink}>NEXT</Link>
+      <Divider />
+    </Wrapper>
   );
 };
 

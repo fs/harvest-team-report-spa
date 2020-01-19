@@ -10,10 +10,9 @@ import WeekInfo from '../components/organisms/WeekInfo';
 
 const Home = ({ employees, query }: { employees: Employee[]; query: HomePageQuery }) => {
   const employeesTableData = getEmployeesTableData(employees);
-  const { week, year } = query;
   return (
     <DefaultTemplate>
-      <WeekInfo week={week} year={year} />
+      <WeekInfo query={query} />
       <Table data={employeesTableData} />
     </DefaultTemplate>
   );
