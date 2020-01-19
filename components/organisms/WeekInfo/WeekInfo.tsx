@@ -11,9 +11,13 @@ const WeekInfo = ({ query }: { query: HomePageQuery }) => {
   const { weekString, nextWeekLink, prevWeekLink } = useWeekInfo(query);
   return (
     <Wrapper>
-      <Link href={prevWeekLink}>PREV</Link>
+      <Link href={prevWeekLink}>
+        <a>PREV</a>
+      </Link>
       <div>This Week: {weekString}</div>
-      <Link href={nextWeekLink}>NEXT</Link>
+      <Link href={nextWeekLink}>
+        <a>NEXT</a>
+      </Link>
       <Divider />
     </Wrapper>
   );

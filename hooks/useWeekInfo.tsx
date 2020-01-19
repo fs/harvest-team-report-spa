@@ -1,4 +1,14 @@
-import { startOfWeek, endOfWeek, setWeek, getWeek, getYear, setYear, format, isSameMonth, isSameYear } from 'date-fns';
+import {
+  startOfISOWeek,
+  endOfISOWeek,
+  setISOWeek,
+  getISOWeek,
+  getYear,
+  setYear,
+  format,
+  isSameMonth,
+  isSameYear,
+} from 'date-fns';
 import { HomePageQuery } from '../public/static/config/types/Queries';
 
 const useWeekInfo = (query: HomePageQuery) => {
@@ -6,10 +16,10 @@ const useWeekInfo = (query: HomePageQuery) => {
   let date = new Date();
   const year = queryYear ? +queryYear : getYear(date);
   date = setYear(date, year);
-  const week = queryWeek ? +queryWeek : getWeek(date);
-  date = setWeek(date, week);
-  const weekStarts = startOfWeek(date, { weekStartsOn: 1 });
-  const weekEnds = endOfWeek(date, { weekStartsOn: 1 });
+  const week = queryWeek ? +queryWeek : getISOWeek(date);
+  date = setISOWeek(date, week);
+  const weekStarts = startOfISOWeek(date);
+  const weekEnds = endOfISOWeek(date);
   const formattedEnd = format(weekEnds, 'd LLL y');
   const formattedStart = (formatString = 'd') => format(weekStarts, formatString);
 
@@ -21,10 +31,10 @@ const useWeekInfo = (query: HomePageQuery) => {
     weekString = `${formattedStart('d LLL y')} - ${formattedEnd}`;
   }
 
-  const nextWeek = setWeek(date, week + 1);
-  const prevWeek = setWeek(date, week - 1);
+  const nextWeek = setISOWeek(date, week + 1);
+  const prevWeek = setISOWeek(date, week - 1);
 
-  const getLink = (linkDate: Date) => `/?week=${getWeek(linkDate)}&year=${getYear(linkDate)}`;
+  const getLink = (linkDate: Date) => `/?week=${getISOWeek(linkDate)}&year=${getYear(linkDate)}`;
   const nextWeekLink = getLink(nextWeek);
   const prevWeekLink = getLink(prevWeek);
 
