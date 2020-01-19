@@ -1,17 +1,19 @@
 import React from 'react';
 import { Class } from '@babel/types';
+import { Employee } from '../public/static/config/types/Employee';
+import { HomePageQuery } from '../public/static/config/types/Queries';
 import Table from '../components/organisms/Table';
 import DefaultTemplate from '../components/templates/DefaultTemplate';
 import EmployeesService from '../services/EmployeesService';
 import { getEmployeesTableData } from '../public/static/utils/getTableData';
-import { Employee } from '../public/static/config/types/Employee';
-import { HomePageQuery } from '../public/static/config/types/Queries';
+import WeekInfo from '../components/organisms/WeekInfo';
 
 const Home = ({ employees, query }: { employees: Employee[]; query: HomePageQuery }) => {
   const employeesTableData = getEmployeesTableData(employees);
   const { week, year } = query;
   return (
     <DefaultTemplate>
+      <WeekInfo week={week} year={year} />
       <Table data={employeesTableData} />
     </DefaultTemplate>
   );
