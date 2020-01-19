@@ -1,11 +1,10 @@
-import { Employee } from '../config/types/Employee';
-import { TableData } from '../config/types/TableData';
+import { Employee } from '../public/static/config/types/Employee';
+import { TableData } from '../public/static/config/types/TableData';
 
 // todo need tests
 // todo need to refactor as hook
 
-// eslint-disable-next-line import/prefer-default-export
-export const getEmployeesTableData = (employees: Employee[]) => {
+const useEmployeesTable = (employees: Employee[]) => {
   const rows = employees.map(employee => {
     return [employee.name, employee.hoursOnWeek.total, '-', employee.capacity, employee.hoursOnWeek.billable];
   });
@@ -15,3 +14,5 @@ export const getEmployeesTableData = (employees: Employee[]) => {
   };
   return data;
 };
+
+export default useEmployeesTable;
