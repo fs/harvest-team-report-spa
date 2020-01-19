@@ -3,11 +3,13 @@ import { Class } from '@babel/types';
 import Table from '../components/organisms/Table';
 import DefaultTemplate from '../components/templates/DefaultTemplate';
 import EmployeesService from '../services/EmployeesService';
-import { Employee } from '../public/static/config/types/employee';
+import { Employee } from '../public/static/config/types/Employee';
 import { getEmployeesTableData } from '../public/static/utils/getTableData';
+import { HomePageQuery } from '../public/static/config/types/Queries';
 
-const Home = ({ employees }: { employees: Employee[] }) => {
+const Home = ({ employees, query }: { employees: Employee[]; query: HomePageQuery }) => {
   const employeesTableData = getEmployeesTableData(employees);
+  const { week, year } = query;
   return (
     <DefaultTemplate>
       <Table data={employeesTableData} />
@@ -15,8 +17,9 @@ const Home = ({ employees }: { employees: Employee[] }) => {
   );
 };
 
-Home.getInitialProps = async (ctx: { apiService: Class }) => {
-  const { apiService } = ctx;
+Home.getInitialProps = async (ctx: { apiService: Class; query: HomePageQuery }) => {
+  const { apiService, query } = ctx;
+  console.log(query);
   const employeesService = new EmployeesService(apiService);
   let employees: Employee[] = [];
 
@@ -25,7 +28,7 @@ Home.getInitialProps = async (ctx: { apiService: Class }) => {
   } catch (err) {
     console.error(err);
   }
-  return { employees };
+  return { employees, query };
 };
 
 export default Home;

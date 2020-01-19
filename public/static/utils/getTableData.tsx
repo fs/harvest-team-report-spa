@@ -1,4 +1,4 @@
-import { Employee } from '../config/types/employee';
+import { Employee } from '../config/types/Employee';
 import { TableData } from '../config/types/TableData';
 
 // eslint-disable-next-line import/prefer-default-export
