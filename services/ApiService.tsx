@@ -1,5 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 
+// todo need tests
+
 export default class ApiService {
   private instance: AxiosInstance;
 

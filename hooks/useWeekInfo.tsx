@@ -11,6 +11,8 @@ import {
 } from 'date-fns';
 import { HomePageQuery } from '../public/static/config/types/Queries';
 
+// todo need tests
+
 const useWeekInfo = (query: HomePageQuery) => {
   const { week: queryWeek, year: queryYear } = query;
   let date = new Date();
