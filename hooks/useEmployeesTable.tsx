@@ -21,7 +21,7 @@ const useEmployeesTable = (employees: Employee[]) => {
     ];
   });
   const data: TableData = {
-    header: ['Employees', 'Total Hours', '', 'Capacity', 'Billable Hours'],
+    header: ['Employees', 'Total Hours', 'Line', 'Capacity', 'Billable Hours'],
     rows,
   };
   return data;

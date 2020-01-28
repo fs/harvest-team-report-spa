@@ -3,11 +3,25 @@ import styled, { css } from 'styled-components';
 
 const Wrapper = styled.div`
   position: relative;
-  width: 300px;
+  min-width: 300px;
   height: 16px;
   border-radius: 5px;
   border: 1px solid #e6e6e6;
   overflow: hidden;
+  ${({ theme }) =>
+    theme.only(
+      'sm',
+      `
+    min-width: 150px;
+  `,
+    )}
+  ${({ theme }) =>
+    theme.only(
+      'xs',
+      `
+    min-width: 100px;
+  `,
+    )}
 `;
 
 const Line = css`
