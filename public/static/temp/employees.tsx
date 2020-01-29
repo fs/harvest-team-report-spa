@@ -12,7 +12,7 @@ export default [
   {
     name: 'Elon Musk',
     capacity: 160,
-    avatarURL: '',
+    avatarURL: '/static/images/avatars/elon_musk.jpeg',
     hoursOnWeek: {
       total: 200,
       billable: 200,
@@ -22,7 +22,7 @@ export default [
   {
     name: 'Jackie Chan',
     capacity: 100,
-    avatarURL: '',
+    avatarURL: '/static/images/avatars/jackie_chan.jpeg',
     hoursOnWeek: {
       total: 300,
       billable: 0,
@@ -32,7 +32,7 @@ export default [
   {
     name: 'Mr. President',
     capacity: 40,
-    avatarURL: '',
+    avatarURL: '/static/images/avatars/mr_president.jpg',
     hoursOnWeek: {
       total: 30,
       billable: 20,
@@ -42,7 +42,7 @@ export default [
   {
     name: 'Alexey Ovalny',
     capacity: 60,
-    avatarURL: '',
+    avatarURL: '/static/images/avatars/ovalny.jpg',
     hoursOnWeek: {
       total: 60,
       billable: 45,
