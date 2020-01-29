@@ -9,7 +9,10 @@ import HoursProgress from '../components/atoms/HoursProgress';
 const useEmployeesTable = (employees: Employee[]) => {
   const rows = employees.map(employee => {
     return [
-      employee.name,
+      <span>
+        <img alt=" " src={employee.avatarURL} />
+        {employee.name}
+      </span>,
       employee.hoursOnWeek.total,
       <HoursProgress
         capacity={employee.capacity}

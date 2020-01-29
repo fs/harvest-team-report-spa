@@ -2,7 +2,7 @@ export default [
   {
     name: 'Renas Sitdikov',
     capacity: 40,
-    avatarURL: '',
+    avatarURL: '/static/images/avatars/avatar.jpg',
     hoursOnWeek: {
       total: 42,
       billable: 36,
