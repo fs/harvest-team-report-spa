@@ -19,4 +19,10 @@ export default {
     lg: Screens.lg,
     xl: Screens.xl,
   },
+  colors: {
+    billable: '#0065CF',
+    billableExceeded: '#FA0000',
+    nonBillable: '#90C6ED',
+    nonBillableExceeded: '#FF9B9B',
+  },
 };

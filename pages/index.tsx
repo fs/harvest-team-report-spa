@@ -5,11 +5,11 @@ import { HomePageQuery } from '../public/static/config/types/Queries';
 import Table from '../components/organisms/Table';
 import DefaultTemplate from '../components/templates/DefaultTemplate';
 import EmployeesService from '../services/EmployeesService';
-import { getEmployeesTableData } from '../public/static/utils/getTableData';
+import useEmployeesTable from '../hooks/useEmployeesTable';
 import WeekInfo from '../components/organisms/WeekInfo';
 
 const Home = ({ employees, query }: { employees: Employee[]; query: HomePageQuery }) => {
-  const employeesTableData = getEmployeesTableData(employees);
+  const employeesTableData = useEmployeesTable(employees);
   return (
     <DefaultTemplate>
       <WeekInfo query={query} />
