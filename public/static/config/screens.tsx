@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
-import Breakpoints from './breakpoints';
+import { breakpoints, breakpointsPlusOnePx } from './breakpoints';
 
-// import { up, down, between, only } from 'styled-breakpoints';
+// import { up, down, between, mediaOnly } from 'styled-breakpoints';
 export enum Screens {
   xs = 'xs',
   sm = 'sm',
@@ -10,25 +10,27 @@ export enum Screens {
   xl = 'xl',
 }
 
+const px = 'px';
+
 enum Width {
   min = 'min-width:',
   max = 'max-width:',
 }
 
 export const mediasUp = {
-  [Screens.xs]: `(${Width.min} ${Breakpoints.underXS})`,
-  [Screens.sm]: `(${Width.min} ${Breakpoints.xsSm})`,
-  [Screens.md]: `(${Width.min} ${Breakpoints.smMd})`,
-  [Screens.lg]: `(${Width.min} ${Breakpoints.mdLg})`,
-  [Screens.xl]: `(${Width.min} ${Breakpoints.lgXl})`,
+  [Screens.xs]: `(${Width.min} ${breakpoints.underXS})`,
+  [Screens.sm]: `(${Width.min} ${breakpointsPlusOnePx.xsSm})`,
+  [Screens.md]: `(${Width.min} ${breakpointsPlusOnePx.smMd})`,
+  [Screens.lg]: `(${Width.min} ${breakpointsPlusOnePx.mdLg})`,
+  [Screens.xl]: `(${Width.min} ${breakpointsPlusOnePx.lgXl})`,
 };
 
 export const mediasDown = {
-  [Screens.xs]: `(${Width.max} ${Breakpoints.xsSm})`,
-  [Screens.sm]: `(${Width.max} ${Breakpoints.smMd})`,
-  [Screens.md]: `(${Width.max} ${Breakpoints.mdLg})`,
-  [Screens.lg]: `(${Width.max} ${Breakpoints.lgXl})`,
-  [Screens.xl]: `(${Width.max} ${Breakpoints.aboveXL})`,
+  [Screens.xs]: `(${Width.max} ${breakpoints.xsSm})`,
+  [Screens.sm]: `(${Width.max} ${breakpoints.smMd})`,
+  [Screens.md]: `(${Width.max} ${breakpoints.mdLg})`,
+  [Screens.lg]: `(${Width.max} ${breakpoints.lgXl})`,
+  [Screens.xl]: `(${Width.max} ${breakpoints.aboveXL})`,
 };
 
 const mediasExact = {
@@ -39,7 +41,7 @@ const mediasExact = {
   [Screens.xl]: `${mediasUp[Screens.xl]}`,
 };
 
-export const only = (screen: string, styles: string) => {
+export const mediaOnly = (screen: string, styles: string) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const str = mediasExact[screen];
@@ -50,7 +52,7 @@ export const only = (screen: string, styles: string) => {
   `;
 };
 
-export const upFrom = (screen: string, styles: string) => {
+export const mediaUpFrom = (screen: string, styles: string) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const str = mediasUp[screen];
@@ -61,7 +63,7 @@ export const upFrom = (screen: string, styles: string) => {
   `;
 };
 
-export const downFrom = (screen: string, styles: string) => {
+export const mediaDownFrom = (screen: string, styles: string) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const str = mediasDown[screen];
@@ -72,7 +74,7 @@ export const downFrom = (screen: string, styles: string) => {
   `;
 };
 
-export const range = (screenFrom: string, screenTo: string, styles: string) => {
+export const mediaBetween = (screenFrom: string, screenTo: string, styles: string) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const str = `${mediasUp[screenFrom]} and ${mediasDown[screenTo]}`;
