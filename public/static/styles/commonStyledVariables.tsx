@@ -3,7 +3,7 @@ import { Screens } from '../config/screens';
 
 const getContainer = (screen: string) => {
   return css`
-    ${({ theme }) => theme.only(screen, `width: ${theme.containerWidth[screen]}`)}
+    ${({ theme }) => theme.mediaOnly(screen, `width: ${theme.containerWidth[screen]}`)}
   `;
 };
 
