@@ -9,14 +9,14 @@ const Wrapper = styled.div`
   border: 1px solid #e6e6e6;
   overflow: hidden;
   ${({ theme }) =>
-    theme.only(
+    theme.mediaOnly(
       'sm',
       `
     min-width: 150px;
   `,
     )}
   ${({ theme }) =>
-    theme.only(
+    theme.mediaOnly(
       'xs',
       `
     min-width: 100px;

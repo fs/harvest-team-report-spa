@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 import { breakpoints, breakpointsPlusOnePx } from './breakpoints';
 
-// import { up, down, between, mediaOnly } from 'styled-breakpoints';
 export enum Screens {
   xs = 'xs',
   sm = 'sm',
@@ -9,8 +8,6 @@ export enum Screens {
   lg = 'lg',
   xl = 'xl',
 }
-
-const px = 'px';
 
 enum Width {
   min = 'min-width:',

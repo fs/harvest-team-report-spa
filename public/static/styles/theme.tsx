@@ -10,7 +10,7 @@ export default {
     [Screens.sm]: '540px',
     [Screens.md]: '720px',
     [Screens.lg]: '960px',
-    [Screens.xl]: '1200px',
+    [Screens.xl]: '1140px',
   },
   screens: {
     xs: Screens.xs,
