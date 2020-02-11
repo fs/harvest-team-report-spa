@@ -71,10 +71,10 @@ export const mediaDownFrom = (screen: string, styles: string) => {
   `;
 };
 
-export const mediaBetween = (screenFrom: string, screenTo: string, styles: string) => {
+export const mediaRange = (screenUpFrom: string, screenDownFrom: string, styles: string) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
-  const str = `${mediasUp[screenFrom]} and ${mediasDown[screenTo]}`;
+  const str = `${mediasUp[screenUpFrom]} and ${screenDownFrom[screenTo]}`;
   return css`
     @media screen and ${str} {
       ${styles}

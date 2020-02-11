@@ -1,9 +1,10 @@
-import { mediaUpFrom, mediaDownFrom, mediaOnly, Screens } from '../config/screens';
+import { mediaUpFrom, mediaDownFrom, mediaOnly, mediaRange, Screens } from '../config/screens';
 
 export default {
   mediaUpFrom,
   mediaDownFrom,
   mediaOnly,
+  mediaRange,
   primary: 'green',
   containerWidth: {
     [Screens.xs]: '96%',
