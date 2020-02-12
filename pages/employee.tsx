@@ -7,7 +7,8 @@ import EmployeesService from '../services/EmployeesService';
 import useEmployeesTable from '../hooks/useEmployeesTable';
 import WeekInfo from '../components/organisms/WeekInfo';
 
-const Home = ({ employees, query }: { employees: Employee[]; query: HomePageQuery }) => {
+const EmployeePage = ({ employees, query }: { employees: Employee[]; query: HomePageQuery }) => {
+  console.log(query);
   const employeesTableData = useEmployeesTable(employees);
   return (
     <DefaultTemplate>
@@ -17,7 +18,7 @@ const Home = ({ employees, query }: { employees: Employee[]; query: HomePageQuer
   );
 };
 
-Home.getInitialProps = async (ctx: { apiService: Class; query: HomePageQuery }) => {
+EmployeePage.getInitialProps = async (ctx: { apiService: Class; query: HomePageQuery }) => {
   const { apiService, query } = ctx;
   const employeesService = new EmployeesService(apiService);
   let employees: Employee[] = [];
@@ -30,4 +31,4 @@ Home.getInitialProps = async (ctx: { apiService: Class; query: HomePageQuery }) 
   return { employees, query };
 };
 
-export default Home;
+export default EmployeePage;
