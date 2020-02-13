@@ -39,7 +39,6 @@ const mediasExact = {
 };
 
 export const mediaOnly = (screen: string, styles: string) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const str = mediasExact[screen];
   return css`
@@ -50,7 +49,6 @@ export const mediaOnly = (screen: string, styles: string) => {
 };
 
 export const mediaUpFrom = (screen: string, styles: string) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const str = mediasUp[screen];
   return css`
@@ -61,7 +59,6 @@ export const mediaUpFrom = (screen: string, styles: string) => {
 };
 
 export const mediaDownFrom = (screen: string, styles: string) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const str = mediasDown[screen];
   return css`
@@ -72,7 +69,6 @@ export const mediaDownFrom = (screen: string, styles: string) => {
 };
 
 export const mediaRange = (screenUpFrom: string, screenDownFrom: string, styles: string) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const str = `${mediasUp[screenUpFrom]} and ${screenDownFrom[screenTo]}`;
   return css`

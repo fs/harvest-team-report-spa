@@ -7,7 +7,6 @@ const getContainer = (screen: string) => {
   `;
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const container = {
   [Screens.xs]: getContainer(Screens.xs),
   [Screens.sm]: getContainer(Screens.sm),
