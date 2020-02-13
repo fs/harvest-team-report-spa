@@ -1,5 +1,6 @@
 export interface Employee {
   name: string;
+  id: number;
   capacity: number;
   avatarURL: string;
   hoursOnWeek: {

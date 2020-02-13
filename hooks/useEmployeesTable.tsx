@@ -1,16 +1,22 @@
 import React from 'react';
-
 import styled from 'styled-components';
+
+import routes from '../routes';
 import { Employee } from '../public/static/config/types/Employee';
 import { TableData } from '../public/static/config/types/TableData';
 import HoursProgress from '../components/atoms/HoursProgress';
 
+const { Link } = routes;
+
 // todo need tests
 // todo need to refactor as hook
 
-const NameContainer = styled.span`
+const NameContainer = styled.a`
   display: flex;
   align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
 `;
 
 const Avatar = styled.img`
@@ -22,10 +28,12 @@ const Avatar = styled.img`
 const useEmployeesTable = (employees: Employee[]) => {
   const rows = employees.map(employee => {
     return [
-      <NameContainer>
-        <Avatar alt=" " src={employee.avatarURL} />
-        <span>{employee.name}</span>
-      </NameContainer>,
+      <Link passHref route={`/employee/${employee.id}/`}>
+        <NameContainer>
+          <Avatar alt=" " src={employee.avatarURL} />
+          <span>{employee.name}</span>
+        </NameContainer>
+      </Link>,
       employee.hoursOnWeek.total,
       <HoursProgress
         capacity={employee.capacity}

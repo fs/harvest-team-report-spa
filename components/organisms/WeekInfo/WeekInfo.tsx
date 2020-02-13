@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { Divider, ButtonGroup, Button } from '@material-ui/core';
 import routes from '../../../routes';
 
-import { EmployeePageQuery, HomePageQuery } from '../../../public/static/config/types';
 import useWeekInfo from '../../../hooks/useWeekInfo';
+
+const { Router } = routes;
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,7 +19,6 @@ const WeekString = styled.span`
 
 const WeekInfo = ({ week, year, id = '' }: { week?: string; year?: string; id?: string }) => {
   const { weekString, nextWeekLink, prevWeekLink } = useWeekInfo(week, year, id);
-  const { Router } = routes;
   const handleChangeWeek = (link: string) => {
     Router.pushRoute(link);
   };
