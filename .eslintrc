@@ -16,11 +16,7 @@
     "navigator": true,
     "fetch": true
   },
-  "plugins": [
-    "@typescript-eslint/eslint-plugin",
-    "prettier",
-    "react-hooks"
-  ],
+  "plugins": ["@typescript-eslint/eslint-plugin", "prettier", "react-hooks"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"
@@ -31,22 +27,30 @@
     "react/prop-types": 0,
     "react/no-array-index-key": 0,
     "react/no-did-update-set-state": "off",
+    "import/prefer-default-export": 0,
+    "@typescript-eslint/ban-ts-ignore": 0,
     "global-require": "warn",
-    "no-underscore-dangle": [2, { "allow": [ "__STORE__" ] }],
-    "jsx-a11y/label-has-for": [ 1, {
-      "components": [ "Label" ],
-      "required": {
-        "some": [ "nesting", "id" ]
-      },
-      "allowChildren": false
-    }],
+    "no-underscore-dangle": [2, { "allow": ["__STORE__"] }],
+    "jsx-a11y/label-has-for": [
+      1,
+      {
+        "components": ["Label"],
+        "required": {
+          "some": ["nesting", "id"]
+        },
+        "allowChildren": false
+      }
+    ],
     "jsx-a11y/anchor-is-valid": 0,
     "max-len": 0,
     "camelcase": "off",
-    "import/extensions": ["error", {
-      "ts": "never",
-      "tsx": "never"
-    }],
+    "import/extensions": [
+      "error",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
     "react/jsx-props-no-spreading": 0,
     "@typescript-eslint/explicit-function-return-type": 0
   },

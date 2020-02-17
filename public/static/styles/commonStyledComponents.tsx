@@ -1,13 +1,13 @@
-import styled from 'styled-components';
-import { container } from './commonStyledVariables';
-import { Screens } from '../config/screens';
+import styled, { css } from 'styled-components';
+import { getContainer } from './commonStyledVariables';
 
-// eslint-disable-next-line import/prefer-default-export
-export const Container = styled.div`
+export const Container = styled.div(
+  ({ theme: { screens } }) => css`
   margin: 0 auto;
-  ${container[Screens.xs]}
-  ${container[Screens.sm]}
-  ${container[Screens.md]}
-  ${container[Screens.lg]}
-  ${container[Screens.xl]}
-`;
+  ${getContainer(screens.xs)}
+  ${getContainer(screens.sm)}
+  ${getContainer(screens.md)}
+  ${getContainer(screens.lg)}
+  ${getContainer(screens.xl)}
+`,
+);

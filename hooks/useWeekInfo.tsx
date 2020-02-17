@@ -9,12 +9,10 @@ import {
   isSameMonth,
   isSameYear,
 } from 'date-fns';
-import { HomePageQuery } from '../public/static/config/types/Queries';
 
 // todo need tests
 
-const useWeekInfo = (query: HomePageQuery) => {
-  const { week: queryWeek, year: queryYear } = query;
+const useWeekInfo = (queryWeek?: string, queryYear?: string, id = '') => {
   let date = new Date();
   const year = queryYear ? +queryYear : getYear(date);
   date = setYear(date, year);
@@ -36,7 +34,9 @@ const useWeekInfo = (query: HomePageQuery) => {
   const nextWeek = setISOWeek(date, week + 1);
   const prevWeek = setISOWeek(date, week - 1);
 
-  const getLink = (linkDate: Date) => `/?week=${getISOWeek(linkDate)}&year=${getYear(linkDate)}`;
+  const employee = id ? `/employee/${id}` : ``;
+
+  const getLink = (linkDate: Date) => `${employee}/?week=${getISOWeek(linkDate)}&year=${getYear(linkDate)}`;
   const nextWeekLink = getLink(nextWeek);
   const prevWeekLink = getLink(prevWeek);
 

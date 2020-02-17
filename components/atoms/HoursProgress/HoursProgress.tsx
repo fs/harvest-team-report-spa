@@ -1,28 +1,22 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const Wrapper = styled.div`
-  position: relative;
-  min-width: 300px;
-  height: 16px;
-  border-radius: 5px;
-  border: 1px solid #e6e6e6;
-  overflow: hidden;
-  ${({ theme }) =>
-    theme.mediaOnly(
-      'sm',
-      `
-    min-width: 150px;
+const Wrapper = styled.div(
+  ({ theme: { screens, screenOnly } }) => css`
+    position: relative;
+    min-width: 300px;
+    height: 16px;
+    border-radius: 5px;
+    border: 1px solid #e6e6e6;
+    overflow: hidden;
+    ${screenOnly(screens.sm)} {
+      min-width: 150px;
+    }
+    ${screenOnly(screens.xs)} {
+      min-width: 100px;
+    }
   `,
-    )}
-  ${({ theme }) =>
-    theme.mediaOnly(
-      'xs',
-      `
-    min-width: 100px;
-  `,
-    )}
-`;
+);
 
 const Line = css`
   height: 100%;

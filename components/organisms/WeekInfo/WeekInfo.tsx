@@ -1,9 +1,11 @@
 import React from 'react';
-import Router from 'next/router';
 import styled from 'styled-components';
 import { Divider, ButtonGroup, Button } from '@material-ui/core';
-import { HomePageQuery } from '../../../public/static/config/types/Queries';
+import routes from '../../../routes';
+
 import useWeekInfo from '../../../hooks/useWeekInfo';
+
+const { Router } = routes;
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,10 +17,10 @@ const WeekString = styled.span`
   font-weight: normal;
 `;
 
-const WeekInfo = ({ query }: { query: HomePageQuery }) => {
-  const { weekString, nextWeekLink, prevWeekLink } = useWeekInfo(query);
+const WeekInfo = ({ week, year, id = '' }: { week?: string; year?: string; id?: string }) => {
+  const { weekString, nextWeekLink, prevWeekLink } = useWeekInfo(week, year, id);
   const handleChangeWeek = (link: string) => {
-    Router.push(link);
+    Router.pushRoute(link);
   };
 
   return (
