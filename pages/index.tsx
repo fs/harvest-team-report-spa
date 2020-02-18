@@ -8,7 +8,7 @@ import useEmployeesTable from '../hooks/useEmployeesTable';
 import WeekInfo from '../components/organisms/WeekInfo';
 
 const Home = ({ employees, week, year }: { employees: Employee[]; week: string; year: string }) => {
-  const employeesTableData = useEmployeesTable(employees);
+  const employeesTableData = useEmployeesTable(employees, week, year);
   return (
     <DefaultTemplate>
       <WeekInfo week={week} year={year} />

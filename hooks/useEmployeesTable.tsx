@@ -25,10 +25,11 @@ const Avatar = styled.img`
   margin-right: 5px;
 `;
 
-const useEmployeesTable = (employees: Employee[]) => {
+const useEmployeesTable = (employees: Employee[], week?: string, year?: string) => {
+  const additionalQuery = week && `?week=${week}${year && `&year=${year}`}`;
   const rows = employees.map(employee => {
     return [
-      <Link passHref route={`/employee/${employee.id}/`}>
+      <Link passHref route={`/employee/${employee.id}/${additionalQuery || ''}`}>
         <NameContainer>
           <Avatar alt=" " src={employee.avatarURL} />
           <span>{employee.name}</span>
