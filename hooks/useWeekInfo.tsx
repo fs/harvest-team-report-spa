@@ -34,9 +34,14 @@ const useWeekInfo = (queryWeek?: string, queryYear?: string, id = '') => {
   const nextWeek = setISOWeek(date, week + 1);
   const prevWeek = setISOWeek(date, week - 1);
 
-  const employee = id ? `/employee/${id}` : ``;
-
-  const getLink = (linkDate: Date) => `${employee}/?week=${getISOWeek(linkDate)}&year=${getYear(linkDate)}`;
+  const getLink = (linkDate: Date) => ({
+    route: id ? 'employee' : 'home',
+    params: {
+      week: getISOWeek(linkDate),
+      year: getYear(linkDate),
+      id: id || undefined,
+    },
+  });
   const nextWeekLink = getLink(nextWeek);
   const prevWeekLink = getLink(prevWeek);
 
