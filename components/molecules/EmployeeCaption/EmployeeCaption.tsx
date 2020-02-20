@@ -3,19 +3,35 @@ import styled from 'styled-components';
 import Avatar from '../../atoms/Avatar';
 import { EmployeeExtended } from '../../../public/static/config/types';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+`;
 
-const Content = styled.div``;
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 16px;
+`;
+
+const Title = styled.h1`
+  margin: 0;
+  margin-top: -10px;
+`;
+
+const Line = styled.p`
+  margin: 0;
+`;
 
 const EmployeeCaption = ({ employee }: { employee: EmployeeExtended }) => {
   const { name, avatarURL, department, email } = employee;
   return (
     <Wrapper>
-      <Avatar width="90px" src={avatarURL} alt={name} />
+      <Avatar width="72px" src={avatarURL} alt={name} />
       <Content>
-        <h1>{name}</h1>
-        <p>{department}</p>
-        <p>{email}</p>
+        <Title>{name}</Title>
+        <Line>{department}</Line>
+        <Line>{email}</Line>
       </Content>
     </Wrapper>
   );
