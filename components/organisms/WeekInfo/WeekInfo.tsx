@@ -19,8 +19,7 @@ const WeekString = styled.span`
 
 const WeekInfo = ({ week, year, id = '' }: { week?: string; year?: string; id?: string }) => {
   const { weekString, nextWeekLink, prevWeekLink } = useWeekInfo(week, year, id);
-  const handleChangeWeek = (link: any) => {
-    console.log(link);
+  const handleChangeWeek = (link: { route: string; params: { week: number; year: number; id?: string } }) => {
     Router.pushRoute(link.route, link.params);
   };
 
