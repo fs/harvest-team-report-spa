@@ -2,8 +2,9 @@ export const employeeExtended = {
   name: '',
   capacity: 0,
   id: 1,
-  avatarURL: '/static/images/avatars/avatar.jpg',
+  avatarURL: '',
   department: '',
+  email: '',
   hoursOnWeek: {
     total: 0,
     billable: 0,

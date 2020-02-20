@@ -5,6 +5,7 @@ import { employeeExtended } from '../public/static/defaultConstants';
 import DefaultTemplate from '../components/templates/DefaultTemplate';
 import EmployeesService from '../services/EmployeesService';
 import WeekInfo from '../components/organisms/WeekInfo';
+import EmployeeCaption from '../components/molecules/EmployeeCaption';
 
 const EmployeePage = ({
   employee,
@@ -20,7 +21,7 @@ const EmployeePage = ({
   return (
     <DefaultTemplate>
       <WeekInfo week={week} year={year} id={id} />
-      <p>{employee.name}</p>
+      <EmployeeCaption employee={employee} />
     </DefaultTemplate>
   );
 };

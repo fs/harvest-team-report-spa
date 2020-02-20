@@ -3,7 +3,8 @@ export default {
   id: 1,
   capacity: 40,
   avatarURL: '/static/images/avatars/avatar.jpg',
-  department: 'Front-End',
+  department: 'Front-end',
+  email: 'renas.sitdikov@flatstack.com',
   hoursOnWeek: {
     total: 42,
     billable: 36,
