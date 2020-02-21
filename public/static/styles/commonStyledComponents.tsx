@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { getContainer } from './commonStyledVariables';
 
-export const Container = styled.div(
+export const Container = styled.main(
   ({ theme: { screens } }) => css`
   margin: 0 auto;
   ${getContainer(screens.xs)}

@@ -1,10 +1,16 @@
 import React from 'react';
 import { Class } from '@babel/types';
+import styled from 'styled-components';
 import { EmployeeExtended, EmployeePageQuery } from '../public/static/config/types';
 import { employeeExtended } from '../public/static/defaultConstants';
 import DefaultTemplate from '../components/templates/DefaultTemplate';
 import EmployeesService from '../services/EmployeesService';
 import WeekInfo from '../components/organisms/WeekInfo';
+import EmployeeCaption from '../components/molecules/EmployeeCaption';
+
+const ContentWrapper = styled.div`
+  margin-top: 16px;
+`;
 
 const EmployeePage = ({
   employee,
@@ -20,7 +26,7 @@ const EmployeePage = ({
   return (
     <DefaultTemplate>
       <WeekInfo week={week} year={year} id={id} />
-      <p>{employee.name}</p>
+      <EmployeeCaption employee={employee} />
     </DefaultTemplate>
   );
 };

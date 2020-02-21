@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import routes from '../routes';
-import { Employee } from '../public/static/config/types/Employee';
-import { TableData } from '../public/static/config/types/TableData';
+import { Employee, TableData } from '../public/static/config/types';
 import HoursProgress from '../components/atoms/HoursProgress';
+import Avatar from '../components/atoms/Avatar';
 
 const { Link } = routes;
 
@@ -19,9 +19,7 @@ const NameContainer = styled.a`
   color: inherit;
 `;
 
-const Avatar = styled.img`
-  border-radius: 10%;
-  width: 30px;
+const AvatarCustomStyles = css`
   margin-right: 5px;
 `;
 
@@ -30,7 +28,7 @@ const useEmployeesTable = (employees: Employee[], week?: string, year?: string) 
     return [
       <Link passHref route="employee" params={{ id: employee.id, week, year }}>
         <NameContainer>
-          <Avatar alt=" " src={employee.avatarURL} />
+          <Avatar alt="" src={employee.avatarURL} width="30px" customStyles={AvatarCustomStyles} />
           <span>{employee.name}</span>
         </NameContainer>
       </Link>,
