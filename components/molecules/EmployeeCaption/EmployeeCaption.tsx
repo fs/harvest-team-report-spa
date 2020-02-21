@@ -5,7 +5,6 @@ import { EmployeeExtended } from '../../../public/static/config/types';
 
 const Wrapper = styled.section`
   display: flex;
-  margin-top: 16px;
 `;
 
 const Content = styled.div`
