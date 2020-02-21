@@ -7,7 +7,7 @@ import useWeekInfo from '../../../hooks/useWeekInfo';
 
 const { Router } = routes;
 
-const Wrapper = styled.div`
+const Wrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;

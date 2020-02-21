@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import Avatar from '../../atoms/Avatar';
 import { EmployeeExtended } from '../../../public/static/config/types';
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   display: flex;
+  margin-top: 16px;
 `;
 
 const Content = styled.div`
@@ -16,7 +17,6 @@ const Content = styled.div`
 
 const Title = styled.h1`
   margin: 0;
-  margin-top: -10px;
 `;
 
 const Line = styled.p`

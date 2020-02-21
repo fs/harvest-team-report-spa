@@ -26,9 +26,7 @@ const EmployeePage = ({
   return (
     <DefaultTemplate>
       <WeekInfo week={week} year={year} id={id} />
-      <ContentWrapper>
-        <EmployeeCaption employee={employee} />
-      </ContentWrapper>
+      <EmployeeCaption employee={employee} />
     </DefaultTemplate>
   );
 };
