@@ -1,10 +1,10 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { Avatar, Typography } from '@material-ui/core';
 
 import routes from '../routes';
 import { Employee, TableData } from '../public/static/config/types';
 import HoursProgress from '../components/atoms/HoursProgress';
-import Avatar from '../components/atoms/Avatar';
 
 const { Link } = routes;
 
@@ -19,17 +19,17 @@ const NameContainer = styled.a`
   color: inherit;
 `;
 
-const AvatarCustomStyles = css`
-  margin-right: 5px;
-`;
-
 const useEmployeesTable = (employees: Employee[], week?: string, year?: string) => {
+  const avatarSize = '35px';
+  const avatarStyles = { width: avatarSize, height: avatarSize, marginRight: '5px' };
   const rows = employees.map(employee => {
     return [
       <Link passHref route="employee" params={{ id: employee.id, week, year }}>
         <NameContainer>
-          <Avatar alt="" src={employee.avatarURL} width="30px" customStyles={AvatarCustomStyles} />
-          <span>{employee.name}</span>
+          <Avatar alt={employee.name} src={employee.avatarURL} variant="rounded" style={avatarStyles} />
+          <Typography variant="body1" component="p">
+            {employee.name}
+          </Typography>
         </NameContainer>
       </Link>,
       employee.hoursOnWeek.total,

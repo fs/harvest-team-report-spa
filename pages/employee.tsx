@@ -7,8 +7,9 @@ import DefaultTemplate from '../components/templates/DefaultTemplate';
 import EmployeesService from '../services/EmployeesService';
 import WeekInfo from '../components/organisms/WeekInfo';
 import EmployeeCaption from '../components/molecules/EmployeeCaption';
+import EmployeeAside from '../components/organisms/EmployeeAside';
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.main`
   margin-top: 16px;
 `;
 
@@ -26,7 +27,10 @@ const EmployeePage = ({
   return (
     <DefaultTemplate>
       <WeekInfo week={week} year={year} id={id} />
-      <EmployeeCaption employee={employee} />
+      <ContentWrapper>
+        <EmployeeCaption employee={employee} />
+        <EmployeeAside employee={employee} />
+      </ContentWrapper>
     </DefaultTemplate>
   );
 };
