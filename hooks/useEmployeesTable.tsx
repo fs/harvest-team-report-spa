@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Avatar } from '@material-ui/core';
+import { Avatar, Typography } from '@material-ui/core';
 
 import routes from '../routes';
 import { Employee, TableData } from '../public/static/config/types';
@@ -27,7 +27,9 @@ const useEmployeesTable = (employees: Employee[], week?: string, year?: string) 
       <Link passHref route="employee" params={{ id: employee.id, week, year }}>
         <NameContainer>
           <Avatar alt={employee.name} src={employee.avatarURL} variant="rounded" style={avatarStyles} />
-          <span>{employee.name}</span>
+          <Typography variant="body1" component="p">
+            {employee.name}
+          </Typography>
         </NameContainer>
       </Link>,
       employee.hoursOnWeek.total,
