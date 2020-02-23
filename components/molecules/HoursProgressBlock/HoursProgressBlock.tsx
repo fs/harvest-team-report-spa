@@ -1,20 +1,85 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Card, CardContent } from '@material-ui/core';
+import styled, { css } from 'styled-components';
+import { Card, CardContent, Typography } from '@material-ui/core';
 
 import { EmployeeExtended } from '../../../public/static/config/types';
 import HoursProgress from '../../atoms/HoursProgress';
 
 const Wrapper = styled.div``;
+const HoursWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const HoursCaption = styled.div``;
+const Legend = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const billableColor = (isExceeded: boolean, colors: any) => css`
+  background-color: ${isExceeded ? colors.billableExceeded : colors.billable};
+`;
+const nonBillableColor = (isExceeded: boolean, colors: any) => css`
+  background-color: ${isExceeded ? colors.nonBillableExceeded : colors.nonBillable};
+`;
+
+const LegendExample = styled.span<{ isExceeded: boolean; isBillable: boolean }>(
+  ({ theme: { colors }, isBillable, isExceeded }) => css`
+    ${isBillable ? billableColor(isExceeded, colors) : nonBillableColor(isExceeded, colors)};
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 10%;
+    margin-right: 8px;
+  `,
+);
 
 const HoursProgressBlock = ({ employee }: { employee: EmployeeExtended }) => {
   const { hoursOnWeek, capacity } = employee;
   const { total, billable } = hoursOnWeek;
+  const isExceeded = total > capacity;
   return (
     <Wrapper>
       <Card>
         <CardContent>
+          <HoursWrapper>
+            <HoursCaption>
+              <Typography variant="body1" component="p">
+                Total Hours
+              </Typography>
+              <Typography variant="h5" component="h2">
+                8.00
+              </Typography>
+            </HoursCaption>
+            <HoursCaption>
+              <Typography variant="body1" component="p">
+                Capacity
+              </Typography>
+              <Typography variant="h5" component="h2">
+                40.00
+              </Typography>
+            </HoursCaption>
+          </HoursWrapper>
+          <br />
           <HoursProgress capacity={capacity} total={total} billable={billable} />
+          <br />
+          <Legend>
+            <Typography variant="body1" component="p">
+              <LegendExample isExceeded={isExceeded} isBillable />
+              Billable
+            </Typography>
+            <Typography variant="h6" component="p">
+              8.00
+            </Typography>
+          </Legend>
+          <Legend>
+            <Typography variant="body1" component="p">
+              <LegendExample isExceeded={isExceeded} isBillable={false} />
+              Non-Billable
+            </Typography>
+            <Typography variant="h6" component="p">
+              0.00
+            </Typography>
+          </Legend>
         </CardContent>
       </Card>
     </Wrapper>
