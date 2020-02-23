@@ -8,9 +8,14 @@ import EmployeesService from '../services/EmployeesService';
 import WeekInfo from '../components/organisms/WeekInfo';
 import EmployeeCaption from '../components/molecules/EmployeeCaption';
 import EmployeeAside from '../components/organisms/EmployeeAside';
+import ListByDays from '../components/organisms/ListByDays';
 
 const ContentWrapper = styled.main`
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   margin-top: 16px;
+  grid-gap: 16px;
 `;
 
 const EmployeePage = ({
@@ -30,6 +35,7 @@ const EmployeePage = ({
       <ContentWrapper>
         <EmployeeCaption employee={employee} />
         <EmployeeAside employee={employee} />
+        <ListByDays />
       </ContentWrapper>
     </DefaultTemplate>
   );
