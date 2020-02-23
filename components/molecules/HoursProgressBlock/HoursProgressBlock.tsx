@@ -47,7 +47,7 @@ const HoursProgressBlock = ({ employee }: { employee: EmployeeExtended }) => {
                 Total Hours
               </Typography>
               <Typography variant="h5" component="h2">
-                8.00
+                {total.toFixed(2)}
               </Typography>
             </HoursCaption>
             <HoursCaption>
@@ -55,7 +55,7 @@ const HoursProgressBlock = ({ employee }: { employee: EmployeeExtended }) => {
                 Capacity
               </Typography>
               <Typography variant="h5" component="h2">
-                40.00
+                {capacity.toFixed(2)}
               </Typography>
             </HoursCaption>
           </HoursWrapper>
@@ -68,7 +68,7 @@ const HoursProgressBlock = ({ employee }: { employee: EmployeeExtended }) => {
               Billable
             </Typography>
             <Typography variant="h6" component="p">
-              8.00
+              {billable.toFixed(2)}
             </Typography>
           </Legend>
           <Legend>
@@ -77,7 +77,7 @@ const HoursProgressBlock = ({ employee }: { employee: EmployeeExtended }) => {
               Non-Billable
             </Typography>
             <Typography variant="h6" component="p">
-              0.00
+              {(total - billable).toFixed(2)}
             </Typography>
           </Legend>
         </CardContent>
