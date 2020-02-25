@@ -8,7 +8,8 @@ const Wrapper = styled.section`
   grid-column: 2;
   display: grid;
   grid-template-columns: auto;
-  grid-gap: 32px;
+  grid-gap: 40px;
+  padding-bottom: 40px;
 `;
 
 const ListByDays = ({ weekByDays }: { weekByDays: EmployeeDay[] }) => {
