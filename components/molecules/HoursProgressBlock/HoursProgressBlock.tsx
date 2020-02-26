@@ -5,7 +5,6 @@ import { Card, CardContent, Typography } from '@material-ui/core';
 import { EmployeeExtended } from '../../../public/static/config/types';
 import HoursProgress from '../../atoms/HoursProgress';
 
-const Wrapper = styled.div``;
 const HoursWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -38,51 +37,49 @@ const HoursProgressBlock = ({ employee }: { employee: EmployeeExtended }) => {
   const { total, billable } = hoursOnWeek;
   const isExceeded = total > capacity;
   return (
-    <Wrapper>
-      <Card>
-        <CardContent>
-          <HoursWrapper>
-            <HoursCaption>
-              <Typography variant="body1" component="p">
-                Total Hours
-              </Typography>
-              <Typography variant="h5" component="h2">
-                {total.toFixed(2)}
-              </Typography>
-            </HoursCaption>
-            <HoursCaption>
-              <Typography variant="body1" component="p">
-                Capacity
-              </Typography>
-              <Typography variant="h5" component="h2">
-                {capacity.toFixed(2)}
-              </Typography>
-            </HoursCaption>
-          </HoursWrapper>
-          <br />
-          <HoursProgress capacity={capacity} total={total} billable={billable} />
-          <br />
-          <Legend>
+    <Card>
+      <CardContent>
+        <HoursWrapper>
+          <HoursCaption>
             <Typography variant="body1" component="p">
-              <LegendExample isExceeded={isExceeded} isBillable />
-              Billable
+              Total Hours
             </Typography>
-            <Typography variant="h6" component="p">
-              {billable.toFixed(2)}
+            <Typography variant="h5" component="h2">
+              {total.toFixed(2)}
             </Typography>
-          </Legend>
-          <Legend>
+          </HoursCaption>
+          <HoursCaption>
             <Typography variant="body1" component="p">
-              <LegendExample isExceeded={isExceeded} isBillable={false} />
-              Non-Billable
+              Capacity
             </Typography>
-            <Typography variant="h6" component="p">
-              {(total - billable).toFixed(2)}
+            <Typography variant="h5" component="h2">
+              {capacity.toFixed(2)}
             </Typography>
-          </Legend>
-        </CardContent>
-      </Card>
-    </Wrapper>
+          </HoursCaption>
+        </HoursWrapper>
+        <br />
+        <HoursProgress capacity={capacity} total={total} billable={billable} />
+        <br />
+        <Legend>
+          <Typography variant="body1" component="p">
+            <LegendExample isExceeded={isExceeded} isBillable />
+            Billable
+          </Typography>
+          <Typography variant="h6" component="p">
+            {billable.toFixed(2)}
+          </Typography>
+        </Legend>
+        <Legend>
+          <Typography variant="body1" component="p">
+            <LegendExample isExceeded={isExceeded} isBillable={false} />
+            Non-Billable
+          </Typography>
+          <Typography variant="h6" component="p">
+            {(total - billable).toFixed(2)}
+          </Typography>
+        </Legend>
+      </CardContent>
+    </Card>
   );
 };
 
