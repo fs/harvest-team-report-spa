@@ -4,9 +4,7 @@ import { Divider, Typography } from '@material-ui/core';
 import { EmployeeDay } from '../../../public/static/config/types';
 import TaskInDay from '../../atoms/TaskInDay';
 
-const Wrapper = styled.article`
-  //padding-left: 8px;
-`;
+const Wrapper = styled.article``;
 
 const Day = styled.span`
   font-weight: bold;
