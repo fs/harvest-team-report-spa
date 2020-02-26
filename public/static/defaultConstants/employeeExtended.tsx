@@ -54,4 +54,6 @@ export const employeeExtended = {
       tasksInDay: [],
     },
   ],
+  projects: [],
+  tasks: [],
 };

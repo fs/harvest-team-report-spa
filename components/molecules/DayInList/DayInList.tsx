@@ -23,8 +23,8 @@ const DayInList = ({ weekDay }: { weekDay: EmployeeDay }) => {
         <Day>{day}</Day> {date}
       </Typography>
       <Divider />
-      {tasksInDay.map(taskInDay => (
-        <TaskInDay taskInDay={taskInDay} />
+      {tasksInDay.map((taskInDay, i) => (
+        <TaskInDay taskInDay={taskInDay} key={i} />
       ))}
       {tasksInDay.length === 0 && (
         <>

@@ -24,7 +24,7 @@ const useEmployeesTable = (employees: Employee[], week?: string, year?: string) 
   const avatarStyles = { width: avatarSize, height: avatarSize, marginRight: '5px' };
   const rows = employees.map(employee => {
     return [
-      <Link passHref route="employee" params={{ id: employee.id, week, year }}>
+      <Link passHref route="employee" params={{ id: employee.id, week, year }} key={employee.id}>
         <NameContainer>
           <Avatar alt={employee.name} src={employee.avatarURL} variant="rounded" style={avatarStyles} />
           <Typography variant="body1" component="p">

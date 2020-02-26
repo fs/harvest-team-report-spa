@@ -11,3 +11,20 @@ export const Container = styled.div(
   ${getContainer(screens.xl)}
 `,
 );
+
+export const ProgressLineWrapper = styled.div(
+  ({ theme: { screens, screenOnly, colors } }) => css`
+    position: relative;
+    min-width: 300px;
+    height: 16px;
+    border-radius: 5px;
+    border: 1px solid ${colors.progressLineBorder};
+    overflow: hidden;
+    ${screenOnly(screens.sm)} {
+      min-width: 150px;
+    }
+    ${screenOnly(screens.xs)} {
+      min-width: 100px;
+    }
+  `,
+);
