@@ -14,8 +14,8 @@ const HoursByDays = ({ weekByDays }: { weekByDays: EmployeeDay[] }) => {
     <Card>
       <CardContent>
         <Wrapper>
-          {weekByDays.map(weekDay => (
-            <HoursInDay weekDay={weekDay} />
+          {weekByDays.map((weekDay, i) => (
+            <HoursInDay weekDay={weekDay} key={i} />
           ))}
         </Wrapper>
       </CardContent>

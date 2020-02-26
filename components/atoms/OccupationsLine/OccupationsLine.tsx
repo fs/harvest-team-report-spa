@@ -25,8 +25,8 @@ const OccupationsLine = ({ occupations, totalHours }: { occupations: EmployeeOcc
   return (
     <ProgressLineWrapper>
       <Line>
-        {occupations.map(occupation => (
-          <LinePart width={`${(occupation.hours / totalHours) * 100}%`} color={occupation.color} />
+        {occupations.map((occupation, i) => (
+          <LinePart width={`${(occupation.hours / totalHours) * 100}%`} color={occupation.color} key={i} />
         ))}
       </Line>
     </ProgressLineWrapper>

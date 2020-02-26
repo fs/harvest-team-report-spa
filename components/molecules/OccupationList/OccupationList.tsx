@@ -30,8 +30,8 @@ const OccupationList = ({
           <br />
           <OccupationsLine occupations={occupations} totalHours={totalHours} />
           <br />
-          {occupations.map(occupation => (
-            <Legend title={occupation.name} hours={occupation.hours} color={occupation.color} />
+          {occupations.map((occupation, i) => (
+            <Legend title={occupation.name} hours={occupation.hours} color={occupation.color} key={i} />
           ))}
         </Wrapper>
       </CardContent>

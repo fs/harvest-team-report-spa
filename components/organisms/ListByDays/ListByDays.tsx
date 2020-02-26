@@ -15,8 +15,8 @@ const Wrapper = styled.section`
 const ListByDays = ({ weekByDays }: { weekByDays: EmployeeDay[] }) => {
   return (
     <Wrapper>
-      {weekByDays.map(weekDay => (
-        <DayInList weekDay={weekDay} />
+      {weekByDays.map((weekDay, i) => (
+        <DayInList weekDay={weekDay} key={i} />
       ))}
     </Wrapper>
   );
