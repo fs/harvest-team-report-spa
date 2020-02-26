@@ -4,9 +4,9 @@ export default {
   capacity: 40,
   avatarURL: '/static/images/avatars/avatar.jpg',
   hoursOnWeek: {
-    total: 42,
+    total: 40,
     billable: 36,
-    nonBillable: 6,
+    nonBillable: 4,
   },
   department: 'Front-end',
   email: 'renas.sitdikov@flatstack.com',
@@ -106,5 +106,13 @@ export default {
       totalHoursInDay: 0,
       tasksInDay: [],
     },
+  ],
+  projects: [
+    { name: 'Premium Parking', hours: 36, color: 'green' },
+    { name: 'Internal', hours: 4, color: 'red' },
+  ],
+  tasks: [
+    { name: 'Front-end Development', hours: 36, color: 'blue' },
+    { name: 'Learning', hours: 4, color: 'yellow' },
   ],
 };

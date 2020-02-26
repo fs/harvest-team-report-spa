@@ -25,5 +25,6 @@ export default {
     billableExceeded: '#FA0000',
     nonBillable: '#90C6ED',
     nonBillableExceeded: '#FF9B9B',
+    progressLineBorder: '#e6e6e6',
   },
 };

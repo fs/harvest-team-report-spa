@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { Card, CardContent, Typography } from '@material-ui/core';
+import styled from 'styled-components';
+import { Card, CardContent } from '@material-ui/core';
 import { EmployeeDay } from '../../../public/static/config/types';
 import HoursInDay from '../../atoms/HoursInDay';
 
