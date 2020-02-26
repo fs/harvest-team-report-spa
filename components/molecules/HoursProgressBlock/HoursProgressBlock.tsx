@@ -4,38 +4,22 @@ import { Card, CardContent, Typography } from '@material-ui/core';
 
 import { EmployeeExtended } from '../../../public/static/config/types';
 import HoursProgress from '../../atoms/HoursProgress';
+import Legend from '../../atoms/Legend/Legend';
+import theme from '../../../public/static/styles/theme';
 
 const HoursWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 const HoursCaption = styled.div``;
-const Legend = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-const billableColor = (isExceeded: boolean, colors: any) => css`
-  background-color: ${isExceeded ? colors.billableExceeded : colors.billable};
-`;
-const nonBillableColor = (isExceeded: boolean, colors: any) => css`
-  background-color: ${isExceeded ? colors.nonBillableExceeded : colors.nonBillable};
-`;
-
-const LegendExample = styled.span<{ isExceeded: boolean; isBillable: boolean }>(
-  ({ theme: { colors }, isBillable, isExceeded }) => css`
-    ${isBillable ? billableColor(isExceeded, colors) : nonBillableColor(isExceeded, colors)};
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-radius: 10%;
-    margin-right: 8px;
-  `,
-);
 
 const HoursProgressBlock = ({ employee }: { employee: EmployeeExtended }) => {
   const { hoursOnWeek, capacity } = employee;
   const { total, billable } = hoursOnWeek;
   const isExceeded = total > capacity;
+  const { colors } = theme;
+  const billableColor = isExceeded ? colors.billableExceeded : colors.billable;
+  const nonBillableColor = isExceeded ? colors.nonBillableExceeded : colors.nonBillable;
   return (
     <Card>
       <CardContent>
@@ -60,24 +44,8 @@ const HoursProgressBlock = ({ employee }: { employee: EmployeeExtended }) => {
         <br />
         <HoursProgress capacity={capacity} total={total} billable={billable} />
         <br />
-        <Legend>
-          <Typography variant="body1" component="p">
-            <LegendExample isExceeded={isExceeded} isBillable />
-            Billable
-          </Typography>
-          <Typography variant="h6" component="p">
-            {billable.toFixed(2)}
-          </Typography>
-        </Legend>
-        <Legend>
-          <Typography variant="body1" component="p">
-            <LegendExample isExceeded={isExceeded} isBillable={false} />
-            Non-Billable
-          </Typography>
-          <Typography variant="h6" component="p">
-            {(total - billable).toFixed(2)}
-          </Typography>
-        </Legend>
+        <Legend title="Billable" hours={billable} color={billableColor} />
+        <Legend title="Non-Billable" hours={total - billable} color={nonBillableColor} />
       </CardContent>
     </Card>
   );
