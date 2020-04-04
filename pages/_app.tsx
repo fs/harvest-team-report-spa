@@ -3,6 +3,7 @@ import React from 'react';
 import { ThemeProvider as StyledThemeProvidera } from 'styled-components';
 import { ThemeProvider as MateriralThemeProvider } from '@material-ui/core/styles';
 import Head from 'next/head';
+import withApiService from '../lib/withApiService';
 import GlobalStyles from '../public/static/styles/globalStyles';
 import Theme from '../public/static/styles/theme';
 import MaterialTheme from '../public/static/styles/materialTheme';
@@ -34,4 +35,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default withApiService(MyApp);

@@ -1,7 +1,11 @@
 import { Class } from '@babel/types';
 import employees from '../public/static/temp/employees';
 import employeeExtended from '../public/static/temp/employeeExtended';
+import { getWeekFromToDates } from '../utils/getWeekFromToDates';
 
+import qs from 'qs';
+
+const apiUrl = '/time_entries';
 // todo need tests
 
 // export const apiUrl = '';
@@ -20,9 +24,10 @@ export default class EmployeesService {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  retrieveAllEmployees(week?: string, year?: string) {
-    // const body = {};
-    // return this.apiService.get(``, body);
+  async retrieveAllEmployees(week?: string, year?: string) {
+    const body = {};
+    const resp = await this.apiService.get(apiUrl, { params: getWeekFromToDates(week, year) });
+    console.log(resp);
     return Promise.resolve(employees);
   }
 }
