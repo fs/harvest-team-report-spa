@@ -1,4 +1,7 @@
+import Qs from 'qs';
 import axios, { AxiosInstance } from 'axios';
+
+export const paramsSerializer = (params: any) => Qs.stringify(params);
 
 // todo need tests
 

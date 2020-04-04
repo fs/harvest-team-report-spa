@@ -4,7 +4,7 @@ import { Card, CardContent, Typography } from '@material-ui/core';
 
 import { EmployeeExtended } from '../../../public/static/config/types';
 import HoursProgress from '../../atoms/HoursProgress';
-import Legend from '../../atoms/Legend/Legend';
+import Legend from '../../atoms/Legend';
 import theme from '../../../public/static/styles/theme';
 
 const HoursWrapper = styled.div`

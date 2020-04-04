@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { EmployeeOccupation } from '../../../public/static/config/types';
 import OccupationsLine from '../../atoms/OccupationsLine';
-import Legend from '../../atoms/Legend/Legend';
+import Legend from '../../atoms/Legend';
 
 const Wrapper = styled.div``;
 

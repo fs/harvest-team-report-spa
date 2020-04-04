@@ -1,6 +1,9 @@
 const next = require('next');
 const routes = require('./routes');
 const express = require('express');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const dev = process.env.NODE_ENV !== 'production';
 // Create the Express-Next App
