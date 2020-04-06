@@ -1,14 +1,49 @@
 import { Class } from '@babel/types';
+import range from 'lodash/range';
+import flatten from 'lodash/flatten';
 import employees from '../public/static/temp/employees';
 import employeeExtended from '../public/static/temp/employeeExtended';
 import { getWeekFromToDates } from '../utils/getWeekFromToDates';
 
-import qs from 'qs';
-
 const apiUrl = '/time_entries';
 // todo need tests
 
-// export const apiUrl = '';
+const retrieveTimeEntries = async (apiService: any, params: {}) => {
+  let timeEntries = [];
+
+  const retrieveTimeEntriesOtherPages = async (nextPage: number, pages: number) => {
+    try {
+      const requests = range(nextPage, pages + 1).map(currentPage =>
+        apiService.get(apiUrl, { params: { ...params, page: currentPage } }),
+      );
+      const responses = await Promise.all(requests);
+      return flatten(responses.map(res => res.data.time_entries));
+    } catch (e) {
+      console.error(e);
+      return Promise.reject(e);
+    }
+  };
+
+  const retrieveTimeEntriesPage = async () => {
+    try {
+      const resp = await apiService.get(apiUrl, { params: { ...params } });
+      const { data } = resp;
+      const { total_pages: pages, next_page: nextPage, page, time_entries: fetchedTimeEntries } = data;
+      timeEntries = [...fetchedTimeEntries];
+      if (page < pages) {
+        const otherPagesTimeEntries = await retrieveTimeEntriesOtherPages(nextPage, pages);
+        timeEntries = flatten([fetchedTimeEntries, otherPagesTimeEntries]);
+      }
+
+      return timeEntries;
+    } catch (e) {
+      console.error(e);
+      return Promise.reject(e);
+    }
+  };
+
+  return retrieveTimeEntriesPage();
+};
 
 export default class EmployeesService {
   private apiService: any;
@@ -25,9 +60,13 @@ export default class EmployeesService {
 
   // eslint-disable-next-line class-methods-use-this
   async retrieveAllEmployees(week?: string, year?: string) {
-    const body = {};
-    const resp = await this.apiService.get(apiUrl, { params: getWeekFromToDates(week, year) });
-    console.log(resp);
+    try {
+      const data = await retrieveTimeEntries(this.apiService, getWeekFromToDates(week, year));
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+
     return Promise.resolve(employees);
   }
 }

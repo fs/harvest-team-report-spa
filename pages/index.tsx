@@ -19,7 +19,6 @@ const Home = ({ employees, week, year }: { employees: Employee[]; week: string; 
 
 Home.getInitialProps = async (ctx: { apiService: Class; query: HomePageQuery }) => {
   const { apiService, query } = ctx;
-  console.log(ctx);
   const { week, year } = query;
   const employeesService = new EmployeesService(apiService);
   let employees: Employee[] = [];
