@@ -53,8 +53,13 @@ export default class EmployeesService {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  retrieveEmployee(id: string, week?: string, year?: string) {
-    // return this.apiService.get(`/${id}`);
+  async retrieveEmployee(id: string, week?: string, year?: string) {
+    // try {
+    //   const data = await retrieveTimeEntries(this.apiService, { ...getWeekFromToDates(week, year), id: +id });
+    //   console.log(data);
+    // } catch (e) {
+    //   console.error(e);
+    // }
     return Promise.resolve(employeeExtended);
   }
 
