@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Card, CardContent, Typography } from '@material-ui/core';
-import { EmployeeOccupation } from '../../../public/static/config/types';
+import { EmployeeOccupation } from '../../../config/types';
 import OccupationsLine from '../../atoms/OccupationsLine';
 import Legend from '../../atoms/Legend';
 

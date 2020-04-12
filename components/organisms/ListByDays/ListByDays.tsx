@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { EmployeeDay } from '../../../public/static/config/types';
+import { EmployeeDay } from '../../../config/types';
 import DayInList from '../../molecules/DayInList';
 
 const Wrapper = styled.section`

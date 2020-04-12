@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Divider, Typography } from '@material-ui/core';
-import { EmployeeDay } from '../../../public/static/config/types';
+import { EmployeeDay } from '../../../config/types';
 import TaskInDay from '../../atoms/TaskInDay';
 
 const Wrapper = styled.article``;

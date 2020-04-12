@@ -1,6 +1,6 @@
 import React from 'react';
 import { Class } from '@babel/types';
-import { Employee, HomePageQuery } from '../public/static/config/types';
+import { Employee, HomePageQuery } from '../config/types';
 import Table from '../components/organisms/Table';
 import DefaultTemplate from '../components/templates/DefaultTemplate';
 import EmployeesService from '../services/EmployeesService';
@@ -23,11 +23,13 @@ Home.getInitialProps = async (ctx: { apiService: Class; query: HomePageQuery }) 
   const employeesService = new EmployeesService(apiService);
   let employees: Employee[] = [];
 
-  try {
-    employees = await employeesService.retrieveAllEmployees(week, year);
-  } catch (err) {
-    console.error(err);
-  }
+  employees = await employeesService.retrieveAllEmployees(week, year);
+
+  // try {
+  //   employees = await employeesService.retrieveAllEmployees(week, year);
+  // } catch (err) {
+  //   console.error(err);
+  // }
   return { employees, week, year };
 };
 

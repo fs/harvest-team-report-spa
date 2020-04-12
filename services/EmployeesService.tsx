@@ -1,17 +1,20 @@
 import { Class } from '@babel/types';
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';
-import employees from '../public/static/temp/employees';
+// import employees from '../public/static/temp/employees';
 import employeeExtended from '../public/static/temp/employeeExtended';
-import { getWeekFromToDates } from '../utils/getWeekFromToDates';
+import { getEmployees, getWeekFromToDates } from '../utils';
 
-const apiUrl = '/time_entries';
+const timeEntriesURL = '/time_entries';
+const usersURL = '/users';
+
 // todo need tests
 
-const retrieveTimeEntries = async (apiService: any, params: {}) => {
-  let timeEntries = [];
+const retrieve = async (apiUrl: string, apiService: any, params: {}) => {
+  const responseObjectName = apiUrl.slice(1);
+  let forReturn = [];
 
-  const retrieveTimeEntriesOtherPages = async (nextPage: number, pages: number) => {
+  const retrieveOtherPages = async (nextPage: number, pages: number) => {
     try {
       const requests = range(nextPage, pages + 1).map(currentPage =>
         apiService.get(apiUrl, { params: { ...params, page: currentPage } }),
@@ -24,25 +27,25 @@ const retrieveTimeEntries = async (apiService: any, params: {}) => {
     }
   };
 
-  const retrieveTimeEntriesPage = async () => {
+  const retrievePage = async () => {
     try {
       const resp = await apiService.get(apiUrl, { params: { ...params } });
       const { data } = resp;
-      const { total_pages: pages, next_page: nextPage, page, time_entries: fetchedTimeEntries } = data;
-      timeEntries = [...fetchedTimeEntries];
+      const { total_pages: pages, next_page: nextPage, page, [responseObjectName]: fetchedObject } = data;
+      forReturn = [...fetchedObject];
       if (page < pages) {
-        const otherPagesTimeEntries = await retrieveTimeEntriesOtherPages(nextPage, pages);
-        timeEntries = flatten([fetchedTimeEntries, otherPagesTimeEntries]);
+        const otherPagesTimeEntries = await retrieveOtherPages(nextPage, pages);
+        forReturn = flatten([fetchedObject, otherPagesTimeEntries]);
       }
 
-      return timeEntries;
+      return forReturn;
     } catch (e) {
       console.error(e);
       return Promise.reject(e);
     }
   };
 
-  return retrieveTimeEntriesPage();
+  return retrievePage();
 };
 
 export default class EmployeesService {
@@ -66,12 +69,15 @@ export default class EmployeesService {
   // eslint-disable-next-line class-methods-use-this
   async retrieveAllEmployees(week?: string, year?: string) {
     try {
-      const data = await retrieveTimeEntries(this.apiService, getWeekFromToDates(week, year));
-      console.log(data);
+      const timeEntries = await retrieve(timeEntriesURL, this.apiService, getWeekFromToDates(week, year));
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      const users = await retrieve(usersURL, this.apiService, { is_active: true });
+      const employees = getEmployees(timeEntries, users);
+      console.log(employees);
+      return employees;
     } catch (e) {
       console.error(e);
+      return [];
     }
-
-    return Promise.resolve(employees);
   }
 }
