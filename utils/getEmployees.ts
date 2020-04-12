@@ -1,4 +1,5 @@
 import groupBy from 'lodash/groupBy';
+import orderBy from 'lodash/orderBy';
 
 // eslint-disable-next-line @typescript-eslint/camelcase
 const defaultUser = { weekly_capacity: 0, avatar_url: '', first_name: '', last_name: '' };
@@ -29,5 +30,5 @@ export const getEmployees = (timeEntries: any, users: any) => {
     return { id: +id, hoursOnWeek, capacity: wCapacity / capacityDivider, avatarURL, name: `${fName} ${lName}` };
   });
 
-  return employees;
+  return orderBy(employees, 'name');
 };
