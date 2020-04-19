@@ -1,7 +1,6 @@
 import { Class } from '@babel/types';
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';
-// import employees from '../public/static/temp/employees';
 import employeeExtended from '../public/static/temp/employeeExtended';
 import { getEmployees, getWeekFromToDates } from '../utils';
 
@@ -69,11 +68,14 @@ export default class EmployeesService {
   // eslint-disable-next-line class-methods-use-this
   async retrieveAllEmployees(week?: string, year?: string) {
     try {
-      const timeEntries = await retrieve(timeEntriesURL, this.apiService, getWeekFromToDates(week, year));
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      const users = await retrieve(usersURL, this.apiService, { is_active: true });
+      const requests = [
+        retrieve(timeEntriesURL, this.apiService, getWeekFromToDates(week, year)),
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        retrieve(usersURL, this.apiService, { is_active: true }),
+      ];
+      const responses = await Promise.all(requests);
+      const [timeEntries, users] = responses;
       const employees = getEmployees(timeEntries, users);
-      console.log(employees);
       return employees;
     } catch (e) {
       console.error(e);

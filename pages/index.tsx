@@ -21,15 +21,7 @@ Home.getInitialProps = async (ctx: { apiService: Class; query: HomePageQuery }) 
   const { apiService, query } = ctx;
   const { week, year } = query;
   const employeesService = new EmployeesService(apiService);
-  let employees: Employee[] = [];
-
-  employees = await employeesService.retrieveAllEmployees(week, year);
-
-  // try {
-  //   employees = await employeesService.retrieveAllEmployees(week, year);
-  // } catch (err) {
-  //   console.error(err);
-  // }
+  const employees = (await employeesService.retrieveAllEmployees(week, year)) || [];
   return { employees, week, year };
 };
 
