@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Avatar, Typography } from '@material-ui/core';
-import { EmployeeExtended } from '../../../public/static/config/types';
+import { EmployeeExtended } from '../../../config/types';
 
 const Wrapper = styled.section`
   display: flex;

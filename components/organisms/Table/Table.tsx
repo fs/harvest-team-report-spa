@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
-import { TableData } from '../../../public/static/config/types';
+import { TableData } from '../../../config/types';
 
 const TableMaterial = ({ data }: { data: TableData }) => {
   return (

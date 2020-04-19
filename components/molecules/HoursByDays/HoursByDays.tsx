@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Card, CardContent } from '@material-ui/core';
-import { EmployeeDay } from '../../../public/static/config/types';
+import { EmployeeDay } from '../../../config/types';
 import HoursInDay from '../../atoms/HoursInDay';
 
 const Wrapper = styled.div`

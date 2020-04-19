@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { EmployeeExtended } from '../../../public/static/config/types';
+import { EmployeeExtended } from '../../../config/types';
 import HoursProgressBlock from '../../molecules/HoursProgressBlock';
 import HoursByDays from '../../molecules/HoursByDays';
 import OccupationList from '../../molecules/OccupationList';

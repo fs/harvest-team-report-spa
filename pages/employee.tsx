@@ -1,7 +1,7 @@
 import React from 'react';
 import { Class } from '@babel/types';
 import styled from 'styled-components';
-import { EmployeeExtended, EmployeePageQuery } from '../public/static/config/types';
+import { EmployeeExtended, EmployeePageQuery } from '../config/types';
 import { employeeExtended } from '../public/static/defaultConstants';
 import DefaultTemplate from '../components/templates/DefaultTemplate';
 import EmployeesService from '../services/EmployeesService';

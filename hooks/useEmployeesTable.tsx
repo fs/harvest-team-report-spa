@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Avatar, Typography } from '@material-ui/core';
 
 import routes from '../routes';
-import { Employee, TableData } from '../public/static/config/types';
+import { Employee, TableData } from '../config/types';
 import HoursProgress from '../components/atoms/HoursProgress';
 
 const { Link } = routes;
@@ -23,23 +23,21 @@ const useEmployeesTable = (employees: Employee[], week?: string, year?: string) 
   const avatarSize = '35px';
   const avatarStyles = { width: avatarSize, height: avatarSize, marginRight: '5px' };
   const rows = employees.map(employee => {
+    const { id, name, avatarURL, hoursOnWeek, capacity } = employee;
+    const { total, billable } = hoursOnWeek;
     return [
-      <Link passHref route="employee" params={{ id: employee.id, week, year }} key={employee.id}>
+      <Link passHref route="employee" params={{ id, week, year }} key={id}>
         <NameContainer>
-          <Avatar alt={employee.name} src={employee.avatarURL} variant="rounded" style={avatarStyles} />
+          <Avatar alt={name} src={avatarURL} variant="rounded" style={avatarStyles} />
           <Typography variant="body1" component="p">
-            {employee.name}
+            {name}
           </Typography>
         </NameContainer>
       </Link>,
-      employee.hoursOnWeek.total,
-      <HoursProgress
-        capacity={employee.capacity}
-        total={employee.hoursOnWeek.total}
-        billable={employee.hoursOnWeek.billable}
-      />,
-      employee.capacity,
-      employee.hoursOnWeek.billable,
+      hoursOnWeek.total.toFixed(2),
+      <HoursProgress capacity={capacity} total={total} billable={billable} />,
+      capacity.toFixed(2),
+      billable.toFixed(2),
     ];
   });
   const data: TableData = {
