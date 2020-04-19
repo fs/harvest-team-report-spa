@@ -9,9 +9,11 @@ const usersURL = '/users';
 
 // todo need tests
 
-const retrieve = async (apiUrl: string, apiService: any, params: {}) => {
+const retrieve = async (apiUrl: string, apiService: any, params?: {}) => {
   const responseObjectName = apiUrl.slice(1);
   let forReturn = [];
+
+  console.log(params);
 
   const retrieveOtherPages = async (nextPage: number, pages: number) => {
     try {
@@ -56,12 +58,22 @@ export default class EmployeesService {
 
   // eslint-disable-next-line class-methods-use-this
   async retrieveEmployee(id: string, week?: string, year?: string) {
-    // try {
-    //   const data = await retrieveTimeEntries(this.apiService, { ...getWeekFromToDates(week, year), id: +id });
-    //   console.log(data);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+    try {
+      const requests = [
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        retrieve(timeEntriesURL, this.apiService, { ...getWeekFromToDates(week, year), user_id: id }),
+        this.apiService.get(`${usersURL}/${id}`),
+      ];
+      const responses = await Promise.all(requests);
+      const [timeEntries, users] = responses;
+      console.log(timeEntries);
+      console.log(users);
+      const employees = getEmployees(timeEntries, users);
+      // return employees;
+    } catch (e) {
+      console.error(e);
+      // return [];
+    }
     return Promise.resolve(employeeExtended);
   }
 
@@ -75,8 +87,7 @@ export default class EmployeesService {
       ];
       const responses = await Promise.all(requests);
       const [timeEntries, users] = responses;
-      const employees = getEmployees(timeEntries, users);
-      return employees;
+      return getEmployees(timeEntries, users);
     } catch (e) {
       console.error(e);
       return [];
