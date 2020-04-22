@@ -66,7 +66,7 @@ export default class EmployeesService {
       ];
       const responses = await Promise.all(requests);
       const [timeEntries, user] = responses;
-      return getEmployee(timeEntries, user);
+      return getEmployee(timeEntries, user.data);
     } catch (e) {
       console.error(e);
       return employeeExtended;
