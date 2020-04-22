@@ -1,15 +1,15 @@
 import { Class } from '@babel/types';
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';
-import employeeExtended from '../public/static/temp/employeeExtended';
-import { getEmployees, getWeekFromToDates } from '../utils';
+import { getEmployee, getEmployees, getWeekFromToDates } from '../utils';
+import { employeeExtended } from '../public/static/defaultConstants';
 
 const timeEntriesURL = '/time_entries';
 const usersURL = '/users';
 
 // todo need tests
 
-const retrieve = async (apiUrl: string, apiService: any, params: {}) => {
+const retrieve = async (apiUrl: string, apiService: any, params?: {}) => {
   const responseObjectName = apiUrl.slice(1);
   let forReturn = [];
 
@@ -56,13 +56,19 @@ export default class EmployeesService {
 
   // eslint-disable-next-line class-methods-use-this
   async retrieveEmployee(id: string, week?: string, year?: string) {
-    // try {
-    //   const data = await retrieveTimeEntries(this.apiService, { ...getWeekFromToDates(week, year), id: +id });
-    //   console.log(data);
-    // } catch (e) {
-    //   console.error(e);
-    // }
-    return Promise.resolve(employeeExtended);
+    try {
+      const requests = [
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        retrieve(timeEntriesURL, this.apiService, { ...getWeekFromToDates(week, year), user_id: id }),
+        this.apiService.get(`${usersURL}/${id}`),
+      ];
+      const responses = await Promise.all(requests);
+      const [timeEntries, user] = responses;
+      return getEmployee(timeEntries, user.data, week, year);
+    } catch (e) {
+      console.error(e);
+      return employeeExtended;
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -75,8 +81,7 @@ export default class EmployeesService {
       ];
       const responses = await Promise.all(requests);
       const [timeEntries, users] = responses;
-      const employees = getEmployees(timeEntries, users);
-      return employees;
+      return getEmployees(timeEntries, users);
     } catch (e) {
       console.error(e);
       return [];
