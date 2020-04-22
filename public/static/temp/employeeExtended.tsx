@@ -1,3 +1,5 @@
+import { hsl } from 'polished';
+
 export default {
   name: 'Renas Sitdikov',
   id: 1,
@@ -108,7 +110,7 @@ export default {
     },
   ],
   projects: [
-    { name: 'Premium Parking', hours: 36, color: 'green' },
+    { name: 'Premium Parking', hours: 36, color: hsl(112, 0.8, 0.4) },
     { name: 'Internal', hours: 4, color: 'red' },
   ],
   tasks: [

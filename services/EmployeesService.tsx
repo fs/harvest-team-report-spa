@@ -13,8 +13,6 @@ const retrieve = async (apiUrl: string, apiService: any, params?: {}) => {
   const responseObjectName = apiUrl.slice(1);
   let forReturn = [];
 
-  console.log(params);
-
   const retrieveOtherPages = async (nextPage: number, pages: number) => {
     try {
       const requests = range(nextPage, pages + 1).map(currentPage =>
@@ -66,7 +64,7 @@ export default class EmployeesService {
       ];
       const responses = await Promise.all(requests);
       const [timeEntries, user] = responses;
-      return getEmployee(timeEntries, user.data);
+      return getEmployee(timeEntries, user.data, week, year);
     } catch (e) {
       console.error(e);
       return employeeExtended;
