@@ -10,7 +10,7 @@ const getEntriesHours = (entries: any) =>
   entries.reduce((totalHours: number, entry: any) => totalHours + entry.hours, 0);
 
 // project or task only
-const getEntryHoursbyField = (entries: any, field: 'project' | 'task', hueStart: number, hueStep: number) => {
+const getEntryHoursByField = (entries: any, field: 'project' | 'task', hueStart: number, hueStep: number) => {
   const sortedField = orderBy(
     Object.values(groupBy(entries, `${field}.id`)).map(groupedEntries => {
       const hours = getEntriesHours(groupedEntries);
@@ -23,8 +23,8 @@ const getEntryHoursbyField = (entries: any, field: 'project' | 'task', hueStart:
 };
 
 export const getEmployee = (timeEntries: any, user: any, week?: any, year?: any) => {
-  const projects = getEntryHoursbyField(timeEntries, 'project', 0, 75);
-  const tasks = getEntryHoursbyField(timeEntries, 'task', 35, 75);
+  const projects = getEntryHoursByField(timeEntries, 'project', 0, 75);
+  const tasks = getEntryHoursByField(timeEntries, 'task', 35, 75);
   const weekByDays = getWeekDaysArray(week, year).map(day => {
     const dayTimeEntries = timeEntries.filter((entry: any) => entry.spent_date === day.fetchFormat);
     const totalHoursInDay = getEntriesHours(dayTimeEntries);
