@@ -12,34 +12,25 @@ export const getEmployee = (timeEntries: any, user: any) => {
   const { id, weekly_capacity: wCapacity, avatar_url: avatarURL, first_name: fName, last_name: lName, email, roles } =
     user || defaultUser;
   const department = roles.join(', ');
-  // const timeEntriesByUser = Object.entries(groupBy(timeEntries, 'user.id'));
-  // const usersById = groupBy(users, 'id');
-  // const employees = timeEntriesByUser.map(entry => {
-  //     const [id, times] = entry;
-  //     const user: any = usersById[id][0];
-  //     const { weekly_capacity: wCapacity, avatar_url: avatarURL, first_name: fName, last_name: lName } =
-  //     user || defaultUser;
-  //     const hoursOnWeek = {
-  //         total: 0,
-  //         billable: 0,
-  //         nonBillable: 0,
-  //     };
-  //     times.forEach(time => {
-  //         const { billable, rounded_hours: hours } = time;
-  //         if (billable) {
-  //             hoursOnWeek.billable += hours;
-  //         } else {
-  //             hoursOnWeek.nonBillable += hours;
-  //         }
-  //     });
-  //     hoursOnWeek.total = hoursOnWeek.billable + hoursOnWeek.nonBillable;
-  //     return { id: +id, hoursOnWeek, capacity: wCapacity / capacityDivider, avatarURL, name: `${fName} ${lName}` };
-  // });
+  const hoursOnWeek = {
+    total: 0,
+    billable: 0,
+    nonBillable: 0,
+  };
+  timeEntries.forEach((timeEntry: any) => {
+    const { billable, rounded_hours: hours } = timeEntry;
+    if (billable) {
+      hoursOnWeek.billable += hours;
+    } else {
+      hoursOnWeek.nonBillable += hours;
+    }
+  });
+  hoursOnWeek.total = hoursOnWeek.billable + hoursOnWeek.nonBillable;
   const got = {
     id: +id,
     email,
     department,
-    // hoursOnWeek,
+    hoursOnWeek,
     capacity: wCapacity / capacityDivider,
     avatarURL,
     name: `${fName} ${lName}`,
@@ -48,5 +39,4 @@ export const getEmployee = (timeEntries: any, user: any) => {
   console.log('got:', got);
 
   return { ...employeeExtended, ...got };
-  // return orderBy(employees, 'name');
 };
