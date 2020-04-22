@@ -1,8 +1,8 @@
 import { Class } from '@babel/types';
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';
-import employeeExtended from '../public/static/temp/employeeExtended';
-import { getEmployees, getWeekFromToDates } from '../utils';
+import { getEmployee, getEmployees, getWeekFromToDates } from '../utils';
+import { employeeExtended } from '../public/static/defaultConstants';
 
 const timeEntriesURL = '/time_entries';
 const usersURL = '/users';
@@ -65,16 +65,12 @@ export default class EmployeesService {
         this.apiService.get(`${usersURL}/${id}`),
       ];
       const responses = await Promise.all(requests);
-      const [timeEntries, users] = responses;
-      console.log(timeEntries);
-      console.log(users);
-      const employees = getEmployees(timeEntries, users);
-      // return employees;
+      const [timeEntries, user] = responses;
+      return getEmployee(timeEntries, user);
     } catch (e) {
       console.error(e);
-      // return [];
+      return employeeExtended;
     }
-    return Promise.resolve(employeeExtended);
   }
 
   // eslint-disable-next-line class-methods-use-this
