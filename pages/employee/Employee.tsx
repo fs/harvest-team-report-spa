@@ -1,14 +1,14 @@
 import React from 'react';
 import { Class } from '@babel/types';
 import styled from 'styled-components';
-import { EmployeeExtended, EmployeePageQuery } from '../config/types';
-import { employeeExtended } from '../public/static/defaultConstants';
-import DefaultTemplate from '../components/templates/DefaultTemplate';
-import EmployeesService from '../services/EmployeesService';
-import WeekInfo from '../components/organisms/WeekInfo';
-import EmployeeCaption from '../components/molecules/EmployeeCaption';
-import EmployeeAside from '../components/organisms/EmployeeAside';
-import ListByDays from '../components/organisms/ListByDays';
+import { EmployeeExtended, EmployeePageQuery } from '../../config/types';
+import { employeeExtended } from '../../public/static/defaultConstants';
+import DefaultTemplate from '../../components/templates/DefaultTemplate';
+import EmployeesService from '../../services/EmployeesService';
+import WeekInfo from '../../components/organisms/WeekInfo';
+import EmployeeCaption from '../../components/molecules/EmployeeCaption';
+import EmployeeAside from '../../components/organisms/EmployeeAside';
+import ListByDays from '../../components/organisms/ListByDays';
 
 const ContentWrapper = styled.main`
   display: grid;
