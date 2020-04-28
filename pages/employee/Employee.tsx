@@ -46,9 +46,7 @@ EmployeePage.getInitialProps = async (ctx: { apiService: Class; query: EmployeeP
   const { apiService, query } = ctx;
   const { week, year, id } = query;
   const employeesService = new EmployeesService(apiService);
-  let employee: EmployeeExtended = { ...employeeExtended };
-
-  employee = await employeesService.retrieveEmployee(id || '0', week, year);
+  const employee = await employeesService.retrieveEmployee(id || '0', week, year);
   return { employee, week, year, id };
 };
 
