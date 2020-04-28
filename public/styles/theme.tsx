@@ -1,4 +1,4 @@
-import { screenUp, screenDown, screenOnly, screenBetween, Screens } from '../../../config/screens';
+import { screenUp, screenDown, screenOnly, screenBetween, Screens } from '../../config/screens';
 
 export default {
   screenUp,

@@ -1,11 +1,11 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Card, CardContent, Typography } from '@material-ui/core';
 
 import { EmployeeExtended } from '../../../config/types';
 import HoursProgress from '../../atoms/HoursProgress';
 import Legend from '../../atoms/Legend';
-import theme from '../../../public/static/styles/theme';
+import theme from '../../../public/styles/theme';
 
 const HoursWrapper = styled.div`
   display: flex;

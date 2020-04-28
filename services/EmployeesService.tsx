@@ -2,7 +2,7 @@ import { Class } from '@babel/types';
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';
 import { getEmployee, getEmployees, getWeekFromToDates } from '../utils';
-import { employeeExtended } from '../public/static/defaultConstants';
+import { employeeExtended } from '../public/defaultConstants';
 
 const timeEntriesURL = '/time_entries';
 const usersURL = '/users';
