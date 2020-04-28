@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { EmployeeExtended, EmployeePageQuery } from '../../config/types';
 import { employeeExtended } from '../../public/static/defaultConstants';
 import DefaultTemplate from '../../components/templates/DefaultTemplate';
-import EmployeesService from '../../services/EmployeesService';
+import HarvestAPIService from '../../services/HarvestAPIService';
 import WeekInfo from '../../components/organisms/WeekInfo';
 import EmployeeCaption from '../../components/molecules/EmployeeCaption';
 import EmployeeAside from '../../components/organisms/EmployeeAside';
@@ -45,8 +45,8 @@ const EmployeePage = ({
 EmployeePage.getInitialProps = async (ctx: { apiService: Class; query: EmployeePageQuery }) => {
   const { apiService, query } = ctx;
   const { week, year, id } = query;
-  const employeesService = new EmployeesService(apiService);
-  const employee = await employeesService.retrieveEmployee(id || '0', week, year);
+  const employeesService = new HarvestAPIService(apiService);
+  const employee = (await employeesService.retrieveEmployee(id || '0', week, year)) || employeeExtended;
   return { employee, week, year, id };
 };
 

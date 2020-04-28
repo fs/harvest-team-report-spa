@@ -47,7 +47,7 @@ const retrieve = async (apiUrl: string, apiService: any, params?: {}) => {
   return retrievePage();
 };
 
-export default class EmployeesService {
+export default class HarvestAPIService {
   private apiService: any;
 
   constructor(apiService: Class) {
