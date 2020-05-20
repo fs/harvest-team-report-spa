@@ -7,6 +7,8 @@ const capacityDivider = 3600;
 
 export const getEmployees = (timeEntries: any, users: any) => {
   const timeEntriesByUser = Object.entries(groupBy(timeEntries, 'user.id'));
+  const teamCapacity =
+    users.reduce((capacity: number, user: any) => user.weekly_capacity + capacity, 0) / capacityDivider;
   const usersById = groupBy(users, 'id');
   const employees = timeEntriesByUser.map(entry => {
     const [id, times] = entry;
@@ -30,5 +32,20 @@ export const getEmployees = (timeEntries: any, users: any) => {
     return { id: +id, hoursOnWeek, capacity: wCapacity / capacityDivider, avatarURL, name: `${fName} ${lName}` };
   });
 
-  return orderBy(employees, 'name');
+  const hoursOnWeekTotal = employees.reduce(
+    (obj, item) => ({
+      ...obj,
+      total: obj.total + item.hoursOnWeek.total,
+      billable: obj.billable + item.hoursOnWeek.billable,
+    }),
+    {
+      total: 0,
+      billable: 0,
+    },
+  );
+
+  const teamTotal = { hoursOnWeek: hoursOnWeekTotal, capacity: teamCapacity };
+  const orderedEmployees = orderBy(employees, 'name');
+
+  return { employees: orderedEmployees, teamTotal };
 };

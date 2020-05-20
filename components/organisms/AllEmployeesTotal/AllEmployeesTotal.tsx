@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CardContent, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import Legend from '../../atoms/Legend';
 import theme from '../../../public/styles/theme';
 import HoursProgress from '../../atoms/HoursProgress';
+import { TeamTotal } from '../../../config/types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,15 +13,8 @@ const Wrapper = styled.div`
   padding: 16px;
 `;
 
-const AllEmployeesTotal = () => {
-  const team = {
-    hoursOnWeek: {
-      total: 1000,
-      billable: 900,
-    },
-    capacity: 1100,
-  };
-  const { hoursOnWeek, capacity } = team;
+const AllEmployeesTotal = ({ teamTotal }: { teamTotal: TeamTotal }) => {
+  const { hoursOnWeek, capacity } = teamTotal;
   const { total, billable } = hoursOnWeek;
   const isExceeded = total > capacity;
   const { colors } = theme;
@@ -33,7 +27,7 @@ const AllEmployeesTotal = () => {
           Total Hours
         </Typography>
         <Typography variant="h5" component="h2">
-          {(200).toFixed(2)}
+          {total.toFixed(2)}
         </Typography>
       </div>
       <div>
@@ -41,7 +35,7 @@ const AllEmployeesTotal = () => {
           Team Capacity
         </Typography>
         <Typography variant="h5" component="h2">
-          {(22300).toFixed(2)}
+          {capacity.toFixed(2)}
         </Typography>
       </div>
       <div>

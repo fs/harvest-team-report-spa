@@ -2,7 +2,7 @@ import { Class } from '@babel/types';
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';
 import { getEmployee, getEmployees, getWeekFromToDates } from '../utils';
-import { employeeExtended } from '../public/defaultConstants';
+import { employeeExtended, teamTotalEmpty } from '../public/defaultConstants';
 
 const timeEntriesURL = '/time_entries';
 const usersURL = '/users';
@@ -84,7 +84,7 @@ export default class EmployeesService {
       return getEmployees(timeEntries, users);
     } catch (e) {
       console.error(e);
-      return [];
+      return { employees: [], teamTotal: teamTotalEmpty };
     }
   }
 }
