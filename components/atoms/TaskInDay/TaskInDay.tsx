@@ -10,6 +10,11 @@ const Wrapper = styled.article`
   padding: 8px;
 `;
 
+const SpaceBetween = styled.div`
+  width: 16px;
+  height: 8px;
+`;
+
 const Caption = styled.div``;
 
 const Project = styled.span`
@@ -29,6 +34,7 @@ const TaskInDay = ({ taskInDay }: { taskInDay: EmployeeDayTask }) => {
             {task}
           </Typography>
         </Caption>
+        <SpaceBetween />
         <Typography variant="h5" component="p">
           {taskHours.toFixed(2)}
         </Typography>
