@@ -1,11 +1,11 @@
 import { breakpoints, breakpointsPlusOnePx } from './breakpoints';
 
 export enum Screens {
-  xs = 'xs',
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-  xl = 'xl',
+  xs = 'xs', // 0 - 576px
+  sm = 'sm', // 576px - 768px
+  md = 'md', // 768px - 992px
+  lg = 'lg', // 992px - 1200px
+  xl = 'xl', // 1200px - 9999px
 }
 
 enum Width {

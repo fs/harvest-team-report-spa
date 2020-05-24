@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Divider, ButtonGroup, Button } from '@material-ui/core';
 import routes from '../../../routes';
 
@@ -7,11 +7,17 @@ import useWeekInfo from '../../../hooks/useWeekInfo';
 
 const { Router } = routes;
 
-const Wrapper = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+const Wrapper = styled.nav(
+  ({ theme: { down, breakpoints } }) => css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    ${down(breakpoints.sm)} {
+      flex-direction: column;
+      padding-bottom: 16px;
+    }
+  `,
+);
 
 const WeekString = styled.span`
   font-weight: normal;
