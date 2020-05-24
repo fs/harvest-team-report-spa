@@ -1,20 +1,35 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Avatar, Typography } from '@material-ui/core';
 import { EmployeeExtended } from '../../../config/types';
 
-const Wrapper = styled.section`
-  display: flex;
-  grid-row: 1;
-  grid-column: 1;
-`;
+const Wrapper = styled.section(
+  ({ theme: { breakpoints, up, down } }) => css`
+    display: flex;
+    grid-row: 1;
+    ${up(breakpoints.sm)} {
+      grid-column: 1 / 3;
+    }
+    ${down(breakpoints.xs)} {
+      flex-direction: column;
+      align-items: center;
+    }
+  `,
+);
 
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-left: 16px;
-`;
+const Content = styled.div(
+  ({ theme: { breakpoints, up, down } }) => css`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    ${up(breakpoints.xs)} {
+      margin-left: 16px;
+    }
+    ${down(breakpoints.xs)} {
+      text-align: center;
+    }
+  `,
+);
 
 const EmployeeCaption = ({ employee }: { employee: EmployeeExtended }) => {
   const { name, avatarURL, department, email } = employee;
