@@ -56,4 +56,7 @@ app
     server.get('/favicon.ico', (req, res) => {
       app.serveStatic(req, res, __dirname + '/public/favicon.ico');
     });
+    server.all('*', async (req, res) => {
+      return handle(req, res);
+    });
   });
