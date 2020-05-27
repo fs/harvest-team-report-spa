@@ -22,17 +22,7 @@ const ContentWrapper = styled.main(
   `,
 );
 
-const EmployeePage = ({
-  employee,
-  week,
-  year,
-  id,
-}: {
-  employee: EmployeeExtended;
-  week: string;
-  year: string;
-  id: string;
-}) => {
+const Home = ({ employee, week, year, id }: { employee: EmployeeExtended; week: string; year: string; id: string }) => {
   const { weekByDays } = employee;
   return (
     <DefaultTemplate week={week} year={year} id={id}>
@@ -45,7 +35,7 @@ const EmployeePage = ({
   );
 };
 
-EmployeePage.getInitialProps = async (ctx: { apiService: Class; query: EmployeePageQuery }) => {
+Home.getInitialProps = async (ctx: { apiService: Class; query: EmployeePageQuery }) => {
   const { apiService, query } = ctx;
   const { week, year, id } = query;
   const employeesService = new EmployeesService(apiService);
@@ -55,4 +45,4 @@ EmployeePage.getInitialProps = async (ctx: { apiService: Class; query: EmployeeP
   return { employee, week, year, id };
 };
 
-export default EmployeePage;
+export default Home;
