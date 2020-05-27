@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development node server.js",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "NODE_ENV=production node server.js",
+    "heroku-postbuild": "yarn build",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx pages components/templates components",
     "lint:ci": "eslint --ext .js,.jsx,.ts,.tsx pages components/templates components",
     "lint:css": "stylelint ./**/*.tsx",
