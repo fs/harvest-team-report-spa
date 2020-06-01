@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { defaults } = require('jest-config');
+
 module.exports = {
   verbose: true,
   clearMocks: true,
@@ -7,7 +10,7 @@ module.exports = {
   testPathIgnorePatterns: [
     '<rootDir>/.next/',
     '<rootDir>/node_modules/',
-    '<rootDir>/.tests/helpers',
+    '<rootDir>/_tests/helpers',
     '<rootDir>/.legacy',
   ],
   moduleNameMapper: {
@@ -15,4 +18,9 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/.mocks/styleMock.js',
     '\\.svg': '<rootDir>/.mocks/svgrMock.js',
   },
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 };

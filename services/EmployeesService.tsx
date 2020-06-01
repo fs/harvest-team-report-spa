@@ -1,7 +1,7 @@
 import { Class } from '@babel/types';
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';
-import { getEmployee, getEmployees, getWeekFromToDates } from '../utils';
+import { getEmployee, getEmployees, getWeeksFromToDates } from '../utils';
 import { employeeExtended, teamTotalEmpty } from '../public/defaultConstants';
 
 const timeEntriesURL = '/time_entries';
@@ -59,7 +59,7 @@ export default class EmployeesService {
     try {
       const requests = [
         // eslint-disable-next-line @typescript-eslint/camelcase
-        retrieve(timeEntriesURL, this.apiService, { ...getWeekFromToDates(week, year), user_id: id }),
+        retrieve(timeEntriesURL, this.apiService, { ...getWeeksFromToDates(week, year), user_id: id }),
         this.apiService.get(`${usersURL}/${id}`),
       ];
       const responses = await Promise.all(requests);
@@ -75,7 +75,7 @@ export default class EmployeesService {
   async retrieveAllEmployees(week?: string, year?: string) {
     try {
       const requests = [
-        retrieve(timeEntriesURL, this.apiService, getWeekFromToDates(week, year)),
+        retrieve(timeEntriesURL, this.apiService, getWeeksFromToDates(week, year)),
         // eslint-disable-next-line @typescript-eslint/camelcase
         retrieve(usersURL, this.apiService, { is_active: true }),
       ];
