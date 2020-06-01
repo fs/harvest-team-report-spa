@@ -14,13 +14,6 @@ const getCurrentWeek = (week?: string, year?: string) => {
 
 export const getWeeksFromToDates = (week?: string, year?: string) => {
   const currentWeek = getCurrentWeek(week, year);
-
-  console.log(week, year);
-  console.log({
-    from: format(startOfISOWeek(currentWeek), fetchFormatString),
-    to: format(lastDayOfISOWeek(currentWeek), fetchFormatString),
-  });
-
   return {
     from: format(startOfISOWeek(currentWeek), fetchFormatString),
     to: format(lastDayOfISOWeek(currentWeek), fetchFormatString),
