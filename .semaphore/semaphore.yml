@@ -44,4 +44,5 @@ blocks:
           commands:
             - checkout
             - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+            - nvm use 10.14.2
             - yarn test:ci
