@@ -12,7 +12,7 @@ export const getEmployees = (timeEntries: any, users: any) => {
   const usersById = groupBy(users, 'id');
   const employees = timeEntriesByUser.map(entry => {
     const [id, times] = entry;
-    const user: any = usersById[id][0];
+    const [user]: any = usersById[id];
     const { weekly_capacity: wCapacity, avatar_url: avatarURL, first_name: fName, last_name: lName } =
       user || defaultUser;
     const hoursOnWeek = {
