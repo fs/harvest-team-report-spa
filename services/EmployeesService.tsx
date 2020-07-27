@@ -77,7 +77,7 @@ export default class EmployeesService {
       const requests = [
         retrieve(timeEntriesURL, this.apiService, getWeeksFromToDates(week, year)),
         // eslint-disable-next-line @typescript-eslint/camelcase
-        retrieve(usersURL, this.apiService, { is_active: true }),
+        retrieve(usersURL, this.apiService),
       ];
       const responses = await Promise.all(requests);
       const [timeEntries, users] = responses;
