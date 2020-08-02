@@ -6,6 +6,10 @@
 - Run `yarn dev` to start dev server
 - Open [http://localhost:3000](http://localhost:3000) in the browser.
 
+## Deployed apps
+
+[Staging app](https://harvest-team-report-spa-stagin.herokuapp.com/)
+
 ## Available Scripts
 
 In the project directory, you can run:
