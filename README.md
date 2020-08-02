@@ -1,3 +1,11 @@
+## How to start
+
+- [Yarn](https://yarnpkg.com/) should be added
+- Clone this repo
+- Run `yarn` to install all dependencies
+- Run `yarn dev` to start dev server
+- Open [http://localhost:3000](http://localhost:3000) in the browser.
+
 ## Available Scripts
 
 In the project directory, you can run:
