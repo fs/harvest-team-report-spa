@@ -6,43 +6,47 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 
+execution_time_limit:
+  minutes: 10
+
 auto_cancel:
   running:
     when: 'true'
 
+global_job_config:
+  prologue:
+    commands:
+      - checkout
+      - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
+      - nvm use 10.14.2
+
 blocks:
   - name: Setup
+    dependencies: []
     task:
       jobs:
         - name: yarn install and cache
           commands:
-            - checkout
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
-            - nvm use 10.14.2
             - yarn
             - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock) node_modules
   - name: ES Lint
+    dependencies: ['Setup']
     task:
       jobs:
         - name: yarn lint
           commands:
-            - checkout
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
             - yarn lint:ci
   - name: Style Lint
+    dependencies: ['Setup']
     task:
       jobs:
         - name: yarn lint:css
           commands:
-            - checkout
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
             - yarn lint:css
   - name: Tests
+    dependencies: ['Setup']
     task:
       jobs:
         - name: yarn test
           commands:
-            - checkout
-            - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum yarn.lock),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
-            - nvm use 10.14.2
             - yarn test:ci
