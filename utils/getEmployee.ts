@@ -1,7 +1,7 @@
 import groupBy from 'lodash/groupBy';
 import orderBy from 'lodash/orderBy';
 import { hsl } from 'polished';
-import { getWeekDaysArray } from './getWeekFromToDates';
+import { getWeekDaysArray } from './getWeeks';
 
 // eslint-disable-next-line @typescript-eslint/camelcase
 const defaultUser = { weekly_capacity: 0, avatar_url: '', first_name: '', last_name: '', email: '', roles: [] };

@@ -12,7 +12,7 @@ const getCurrentWeek = (week?: string, year?: string) => {
   return setISOWeek(new Date().setFullYear(isoYear), isoWeek);
 };
 
-export const getWeekFromToDates = (week?: string, year?: string) => {
+export const getWeeksFromToDates = (week?: string, year?: string) => {
   const currentWeek = getCurrentWeek(week, year);
   return {
     from: format(startOfISOWeek(currentWeek), fetchFormatString),
