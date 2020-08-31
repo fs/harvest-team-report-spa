@@ -1,7 +1,8 @@
 import groupBy from 'lodash/groupBy';
 import orderBy from 'lodash/orderBy';
 
-// eslint-disable-next-line @typescript-eslint/camelcase
+/* eslint-disable @typescript-eslint/camelcase */
+
 const defaultUser = { weekly_capacity: 0, avatar_url: '' };
 const capacityDivider = 3600;
 
