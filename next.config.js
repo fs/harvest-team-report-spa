@@ -19,6 +19,7 @@ const nextConfig = {
         },
       },
     });
+    config.resolve.modules.push(__dirname);
     return config;
   },
   env: {

@@ -6,11 +6,12 @@ import { employeeExtended, teamTotalEmpty } from '../public/defaultConstants';
 
 const timeEntriesURL = '/time_entries';
 const usersURL = '/users';
+const teamReportURL = '/reports/time/team';
 
 // todo need tests
 
-const retrieve = async (apiUrl: string, apiService: any, params?: {}) => {
-  const responseObjectName = apiUrl.slice(1);
+const retrieve = async (apiUrl: string, apiService: any, params?: {}, respObjName?: string) => {
+  const responseObjectName = respObjName || apiUrl.slice(1);
   let forReturn = [];
 
   const retrieveOtherPages = async (nextPage: number, pages: number) => {
@@ -58,7 +59,6 @@ export default class EmployeesService {
   async retrieveEmployee(id: string, week?: string, year?: string) {
     try {
       const requests = [
-        // eslint-disable-next-line @typescript-eslint/camelcase
         retrieve(timeEntriesURL, this.apiService, { ...getWeeksFromToDates(week, year), user_id: id }),
         this.apiService.get(`${usersURL}/${id}`),
       ];
@@ -75,13 +75,12 @@ export default class EmployeesService {
   async retrieveAllEmployees(week?: string, year?: string) {
     try {
       const requests = [
-        retrieve(timeEntriesURL, this.apiService, getWeeksFromToDates(week, year)),
-        // eslint-disable-next-line @typescript-eslint/camelcase
+        retrieve(teamReportURL, this.apiService, getWeeksFromToDates(week, year), 'results'),
         retrieve(usersURL, this.apiService),
       ];
       const responses = await Promise.all(requests);
-      const [timeEntries, users] = responses;
-      return getEmployees(timeEntries, users);
+      const [teamReport, users] = responses;
+      return getEmployees(teamReport, users);
     } catch (e) {
       console.error(e);
       return { employees: [], teamTotal: teamTotalEmpty };
