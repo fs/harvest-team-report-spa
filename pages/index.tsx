@@ -1,13 +1,13 @@
 import React from 'react';
 import { Class } from '@babel/types';
 import { Typography } from '@material-ui/core';
-import { Employee, HomePageQuery, TeamTotal } from '../config/types';
-import Table from '../components/organisms/Table';
-import DefaultTemplate from '../components/templates/DefaultTemplate';
-import EmployeesService from '../services/EmployeesService';
-import useEmployeesTable from '../hooks/useEmployeesTable';
-import AllEmployeesTotal from '../components/organisms/AllEmployeesTotal';
-import { teamTotalEmpty } from '../public/defaultConstants';
+import { Employee, HomePageQuery, TeamTotal } from 'config/types';
+import Table from 'components/organisms/Table';
+import DefaultTemplate from 'components/templates/DefaultTemplate';
+import EmployeesService from 'services/EmployeesService';
+import useEmployeesTable from 'hooks/useEmployeesTable';
+import AllEmployeesTotal from 'components/organisms/AllEmployeesTotal';
+import { teamTotalEmpty } from 'public/defaultConstants';
 
 const Home = ({
   teamTotal,
