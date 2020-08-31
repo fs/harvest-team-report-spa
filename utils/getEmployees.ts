@@ -48,10 +48,12 @@ export const getEmployees = (teamReport: any, users: any) => {
       ...obj,
       total: obj.total + item.hoursOnWeek.total,
       billable: obj.billable + item.hoursOnWeek.billable,
+      nonBillable: obj.nonBillable + item.hoursOnWeek.nonBillable,
     }),
     {
       total: 0,
       billable: 0,
+      nonBillable: 0,
     },
   );
   const orderedEmployees = orderBy(employees, 'name');
