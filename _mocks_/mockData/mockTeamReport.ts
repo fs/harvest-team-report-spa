@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 export const mockTeamReport = [
   {
     user_id: 3108587,

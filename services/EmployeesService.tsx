@@ -59,7 +59,6 @@ export default class EmployeesService {
   async retrieveEmployee(id: string, week?: string, year?: string) {
     try {
       const requests = [
-        // eslint-disable-next-line @typescript-eslint/camelcase
         retrieve(timeEntriesURL, this.apiService, { ...getWeeksFromToDates(week, year), user_id: id }),
         this.apiService.get(`${usersURL}/${id}`),
       ];
@@ -77,7 +76,6 @@ export default class EmployeesService {
     try {
       const requests = [
         retrieve(teamReportURL, this.apiService, getWeeksFromToDates(week, year), 'results'),
-        // eslint-disable-next-line @typescript-eslint/camelcase
         retrieve(usersURL, this.apiService),
       ];
       const responses = await Promise.all(requests);

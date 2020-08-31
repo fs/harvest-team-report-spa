@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 export const mockUsers = [
   {
     id: 3108587,
