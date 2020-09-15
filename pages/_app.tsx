@@ -5,7 +5,6 @@ import { ThemeProvider as MateriralThemeProvider } from '@material-ui/core/style
 import Head from 'next/head';
 import NProgress from 'nprogress';
 import routes from '../routes';
-import withApiService from '../lib/withApiService';
 import GlobalStyles from '../public/styles/globalStyles';
 import Theme from '../public/styles/theme';
 import MaterialTheme from '../public/styles/materialTheme';
@@ -43,4 +42,4 @@ class MyApp extends App {
   }
 }
 
-export default withApiService(MyApp);
+export default MyApp;

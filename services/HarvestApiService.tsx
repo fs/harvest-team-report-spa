@@ -1,16 +1,17 @@
+import axios from 'axios';
 import qs from 'qs';
-import axios, { AxiosInstance } from 'axios';
+import ApiService from './ApiService';
 
 export const paramsSerializer = (params: any) => qs.stringify(params);
 
 // todo need tests
 
-export default class ApiService {
-  public instance: AxiosInstance;
-
+export default class HarvestApiService extends ApiService {
   constructor() {
+    super();
+
     this.instance = axios.create({
-      baseURL: process.env.OWN_API_URL,
+      baseURL: process.env.API_URL,
       paramsSerializer,
     });
 
@@ -22,18 +23,12 @@ export default class ApiService {
           ...axiosConfig,
           headers: {
             ...axiosConfig.headers,
+            'Harvest-Account-Id': process.env.HARVEST_ACCOUNT_ID,
+            Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
           },
         };
       },
       err => Promise.reject(err),
-    );
-
-    this.instance.interceptors.response.use(
-      resp => resp,
-      err => {
-        console.error(err);
-        return Promise.reject(err.response.data.errors);
-      },
     );
   }
 }
