@@ -1,13 +1,15 @@
 import React from 'react';
-import { Class } from '@babel/types';
 import { Typography } from '@material-ui/core';
 import { Employee, HomePageQuery, TeamTotal } from 'config/types';
 import Table from 'components/organisms/Table';
 import DefaultTemplate from 'components/templates/DefaultTemplate';
-import EmployeesService from 'services/EmployeesService';
 import useEmployeesTable from 'hooks/useEmployeesTable';
 import AllEmployeesTotal from 'components/organisms/AllEmployeesTotal';
 import { teamTotalEmpty } from 'public/defaultConstants';
+import { getService } from 'utils';
+import ApiService from '../services/ApiService';
+import OwnApiEmployeesService from '../services/OwnApiEmployeesService';
+import EmployeesService from '../services/EmployeesService';
 
 const Home = ({
   teamTotal,
@@ -37,10 +39,10 @@ const Home = ({
   );
 };
 
-Home.getInitialProps = async (ctx: { apiService: Class; query: HomePageQuery }) => {
-  const { apiService, query } = ctx;
+Home.getInitialProps = async (ctx: { query: HomePageQuery }) => {
+  const { query } = ctx;
   const { week, year } = query;
-  const employeesService = new EmployeesService(apiService);
+  const employeesService = getService();
   const { employees, teamTotal } = (await employeesService.retrieveAllEmployees(week, year)) || {
     employees: [],
     teamTotal: teamTotalEmpty,
