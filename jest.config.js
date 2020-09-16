@@ -18,6 +18,7 @@ module.exports = {
   },
   testRegex: '(/_tests_/.*|(\\.|/)(test|spec))\\.tsx?$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  moduleDirectories: ['node_modules', '.'],
   globals: {
     'ts-jest': {
       tsConfig: 'tsconfig.test.json',

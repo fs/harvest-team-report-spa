@@ -1,7 +1,7 @@
 import React from 'react';
-import { Container } from '../../../public/styles/commonStyledComponents';
-import Header from '../../organisms/Header';
-import WeekInfo from '../../organisms/WeekInfo';
+import { Container } from 'public/styles/commonStyledComponents';
+import Header from 'components/organisms/Header';
+import WeekInfo from 'components/organisms/WeekInfo';
 
 const DefaultTemplate = ({
   children,

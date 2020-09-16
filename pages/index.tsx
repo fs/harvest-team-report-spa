@@ -7,9 +7,6 @@ import useEmployeesTable from 'hooks/useEmployeesTable';
 import AllEmployeesTotal from 'components/organisms/AllEmployeesTotal';
 import { teamTotalEmpty } from 'public/defaultConstants';
 import { getService } from 'utils';
-import ApiService from '../services/ApiService';
-import OwnApiEmployeesService from '../services/OwnApiEmployeesService';
-import EmployeesService from '../services/EmployeesService';
 
 const Home = ({
   teamTotal,

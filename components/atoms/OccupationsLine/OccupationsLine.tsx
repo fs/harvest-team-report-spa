@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { ProgressLineWrapper } from '../../../public/styles/commonStyledComponents';
-import { EmployeeOccupation } from '../../../config/types';
+import { ProgressLineWrapper } from 'public/styles/commonStyledComponents';
+import { EmployeeOccupation } from 'config/types';
 
 const line = css`
   height: 100%;

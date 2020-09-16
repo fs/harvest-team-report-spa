@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
-import { EmployeeDay } from '../../../config/types';
+import { EmployeeDay } from 'config/types';
 
 const Wrapper = styled.div`
   text-align: center;

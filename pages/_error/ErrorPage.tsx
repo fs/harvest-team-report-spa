@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
-import DefaultTemplate from '../../components/templates/DefaultTemplate';
+import DefaultTemplate from 'components/templates/DefaultTemplate';
 
 const Image = styled.div`
   display: flex;

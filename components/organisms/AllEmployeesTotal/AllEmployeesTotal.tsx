@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
-import Legend from '../../atoms/Legend';
-import theme from '../../../public/styles/theme';
-import HoursProgress from '../../atoms/HoursProgress';
-import { TeamTotal } from '../../../config/types';
+import Legend from 'components/atoms/Legend';
+import theme from 'public/styles/theme';
+import HoursProgress from 'components/atoms/HoursProgress';
+import { TeamTotal } from 'config/types';
 
 const Wrapper = styled.div`
   padding: 16px;

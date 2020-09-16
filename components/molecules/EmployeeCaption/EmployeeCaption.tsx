@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Avatar, Typography } from '@material-ui/core';
-import { EmployeeExtended } from '../../../config/types';
+import { EmployeeExtended } from 'config/types';
 
 const Wrapper = styled.section(
   ({ theme: { breakpoints, up, down } }) => css`

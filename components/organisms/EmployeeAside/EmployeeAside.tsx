@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { EmployeeExtended } from '../../../config/types';
-import HoursProgressBlock from '../../molecules/HoursProgressBlock';
-import HoursByDays from '../../molecules/HoursByDays';
-import OccupationList from '../../molecules/OccupationList';
+import { EmployeeExtended } from 'config/types';
+import HoursProgressBlock from 'components/molecules/HoursProgressBlock';
+import HoursByDays from 'components/molecules/HoursByDays';
+import OccupationList from 'components/molecules/OccupationList';
 
 const Wrapper = styled.aside`
   grid-row: 2;

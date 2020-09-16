@@ -1,5 +1,5 @@
-import { employeeExtended, teamTotalEmpty } from '../public/defaultConstants';
-import ApiService from './ApiService';
+import { employeeExtended, teamTotalEmpty } from 'public/defaultConstants';
+import ApiService from 'services/ApiService';
 
 // todo need tests
 

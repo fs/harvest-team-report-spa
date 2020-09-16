@@ -1,6 +1,6 @@
-import { getEmployee } from '../../utils';
-import { mockUserTimeEntries, mockUser } from '../../_mocks_/mockData';
-import { expectedEmployee } from '../../_mocks_/expectedData';
+import { getEmployee } from 'utils';
+import { mockUserTimeEntries, mockUser } from '_mocks_/mockData';
+import { expectedEmployee } from '_mocks_/expectedData';
 
 describe('getEmployee', () => {
   test('Happy path', () => {

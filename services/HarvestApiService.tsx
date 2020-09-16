@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
-import ApiService from './ApiService';
-import { harvestHeaders } from '../public/defaultConstants';
+import ApiService from 'services/ApiService';
+import { harvestHeaders } from 'public/defaultConstants';
 
 export const paramsSerializer = (params: any) => qs.stringify(params);
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Card, CardContent } from '@material-ui/core';
-import { EmployeeDay } from '../../../config/types';
-import HoursInDay from '../../atoms/HoursInDay';
+import { EmployeeDay } from 'config/types';
+import HoursInDay from 'components/atoms/HoursInDay';
 
 const Wrapper = styled.div`
   display: flex;

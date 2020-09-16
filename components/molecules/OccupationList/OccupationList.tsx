@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Card, CardContent, Typography } from '@material-ui/core';
-import { EmployeeOccupation } from '../../../config/types';
-import OccupationsLine from '../../atoms/OccupationsLine';
-import Legend from '../../atoms/Legend';
+import { EmployeeOccupation } from 'config/types';
+import OccupationsLine from 'components/atoms/OccupationsLine';
+import Legend from 'components/atoms/Legend';
 
 const Wrapper = styled.div``;
 

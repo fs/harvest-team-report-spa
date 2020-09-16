@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { EmployeeDay } from '../../../config/types';
-import DayInList from '../../molecules/DayInList';
+import { EmployeeDay } from 'config/types';
+import DayInList from 'components/molecules/DayInList';
 
 const Wrapper = styled.section(
   ({ theme: { breakpoints, down } }) => css`

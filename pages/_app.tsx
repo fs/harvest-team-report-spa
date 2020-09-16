@@ -4,10 +4,10 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { ThemeProvider as MateriralThemeProvider } from '@material-ui/core/styles';
 import Head from 'next/head';
 import NProgress from 'nprogress';
-import routes from '../routes';
-import GlobalStyles from '../public/styles/globalStyles';
-import Theme from '../public/styles/theme';
-import MaterialTheme from '../public/styles/materialTheme';
+import routes from 'routes';
+import GlobalStyles from 'public/styles/globalStyles';
+import Theme from 'public/styles/theme';
+import MaterialTheme from 'public/styles/materialTheme';
 
 const { Router } = routes;
 

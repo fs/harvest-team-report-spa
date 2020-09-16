@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar } from '@material-ui/core';
 import styled from 'styled-components';
-import routes from '../../../routes';
+import routes from 'routes';
 
 const { Link } = routes;
 

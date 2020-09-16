@@ -1,11 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { EmployeeExtended, EmployeePageQuery } from '../../config/types';
-import DefaultTemplate from '../../components/templates/DefaultTemplate';
-import EmployeeCaption from '../../components/molecules/EmployeeCaption';
-import EmployeeAside from '../../components/organisms/EmployeeAside';
-import ListByDays from '../../components/organisms/ListByDays';
-import { getService } from '../../utils';
+import { EmployeeExtended, EmployeePageQuery } from 'config/types';
+import DefaultTemplate from 'components/templates/DefaultTemplate';
+import EmployeeCaption from 'components/molecules/EmployeeCaption';
+import EmployeeAside from 'components/organisms/EmployeeAside';
+import ListByDays from 'components/organisms/ListByDays';
+import { getService } from 'utils';
 
 const ContentWrapper = styled.main(
   ({ theme: { breakpoints, down } }) => css`

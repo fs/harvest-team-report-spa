@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Divider, ButtonGroup, Button } from '@material-ui/core';
-import routes from '../../../routes';
+import routes from 'routes';
 
-import useWeekInfo from '../../../hooks/useWeekInfo';
+import useWeekInfo from 'hooks/useWeekInfo';
 
 const { Router } = routes;
 

@@ -1,8 +1,8 @@
 import range from 'lodash/range';
 import flatten from 'lodash/flatten';
-import { getEmployee, getEmployees, getWeeksFromToDates } from '../utils';
-import { employeeExtended, teamTotalEmpty } from '../public/defaultConstants';
-import HarvestApiService from './HarvestApiService';
+import { getEmployee, getEmployees, getWeeksFromToDates } from 'utils';
+import { employeeExtended, teamTotalEmpty } from 'public/defaultConstants';
+import HarvestApiService from 'services/HarvestApiService';
 
 const timeEntriesURL = '/time_entries';
 const usersURL = '/users';

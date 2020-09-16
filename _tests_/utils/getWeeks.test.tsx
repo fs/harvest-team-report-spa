@@ -1,4 +1,4 @@
-import { getWeeksFromToDates } from '../../utils';
+import { getWeeksFromToDates } from 'utils';
 
 describe('getWeeksFromToDates', () => {
   test('getWeeksFromToDates should return data without week and year', () => {
