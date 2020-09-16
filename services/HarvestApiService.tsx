@@ -1,6 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import ApiService from './ApiService';
+import { harvestHeaders } from '../public/defaultConstants';
 
 export const paramsSerializer = (params: any) => qs.stringify(params);
 
@@ -23,8 +24,7 @@ export default class HarvestApiService extends ApiService {
           ...axiosConfig,
           headers: {
             ...axiosConfig.headers,
-            'Harvest-Account-Id': process.env.HARVEST_ACCOUNT_ID,
-            Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+            ...harvestHeaders.headers,
           },
         };
       },
