@@ -8,9 +8,9 @@ const materialTheme = createMuiTheme({
     },
     type: 'light',
     primary: {
-      light: '#7986cb',
-      main: '#3f51b5',
-      dark: '#303f9f',
+      light: '#4c91b3',
+      main: '#1e3f4e',
+      dark: '#172b35',
       contrastText: '#fff',
     },
     secondary: {
