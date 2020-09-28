@@ -1,20 +1,28 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Divider, ButtonGroup, Button } from '@material-ui/core';
+import { ButtonGroup, Button, Card, CardContent } from '@material-ui/core';
 import routes from 'routes';
 
 import useWeekInfo from 'hooks/useWeekInfo';
 
 const { Router } = routes;
 
-const Wrapper = styled.nav(
+const Wrapper = styled.div`
+  margin: 16px 0;
+`;
+
+const Title = styled.h1`
+  margin: 0;
+`;
+
+const ContentWrapper = styled.nav(
   ({ theme: { down, breakpoints } }) => css`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     ${down(breakpoints.sm)} {
       flex-direction: column;
-      padding-bottom: 16px;
     }
   `,
 );
@@ -30,20 +38,23 @@ const WeekInfo = ({ week, year, id = '' }: { week?: string; year?: string; id?: 
   };
 
   return (
-    <>
-      <Wrapper>
-        <h1>
-          <b>This Week:</b> <WeekString>{weekString}</WeekString>
-        </h1>
-        <div>
-          <ButtonGroup>
-            <Button onClick={() => handleChangeWeek(prevWeekLink)}>PREV</Button>
-            <Button onClick={() => handleChangeWeek(nextWeekLink)}>NEXT</Button>
-          </ButtonGroup>
-        </div>
-      </Wrapper>
-      <Divider />
-    </>
+    <Wrapper>
+      <Card>
+        <CardContent>
+          <ContentWrapper>
+            <Title>
+              <b>This Week:</b> <WeekString>{weekString}</WeekString>
+            </Title>
+            <div>
+              <ButtonGroup color="primary">
+                <Button onClick={() => handleChangeWeek(prevWeekLink)}>PREV</Button>
+                <Button onClick={() => handleChangeWeek(nextWeekLink)}>NEXT</Button>
+              </ButtonGroup>
+            </div>
+          </ContentWrapper>
+        </CardContent>
+      </Card>
+    </Wrapper>
   );
 };
 

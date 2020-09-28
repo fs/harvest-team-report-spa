@@ -1,19 +1,28 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Divider, Typography } from '@material-ui/core';
+import styled, { css } from 'styled-components';
+import { Typography } from '@material-ui/core';
 import { EmployeeDay } from 'config/types';
 import TaskInDay from 'components/atoms/TaskInDay';
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article(
+  ({ theme: { colors } }) => css`
+    article:nth-of-type(odd) {
+      background-color: ${colors.backGround};
+    }
+  `,
+);
 
 const Day = styled.span`
   font-weight: bold;
   margin-left: 8px;
 `;
 
-const EmptyDay = styled.div`
-  padding: 8px;
-`;
+const EmptyDay = styled.div(
+  ({ theme: { colors } }) => css`
+    padding: 8px;
+    background-color: ${colors.backGround};
+  `,
+);
 
 const DayInList = ({ weekDay }: { weekDay: EmployeeDay }) => {
   const { day, date, tasksInDay } = weekDay;
@@ -22,7 +31,6 @@ const DayInList = ({ weekDay }: { weekDay: EmployeeDay }) => {
       <Typography variant="body1" component="h5">
         <Day>{day}</Day> {date}
       </Typography>
-      <Divider />
       {tasksInDay.map((taskInDay, i) => (
         <TaskInDay taskInDay={taskInDay} key={i} />
       ))}
@@ -33,7 +41,6 @@ const DayInList = ({ weekDay }: { weekDay: EmployeeDay }) => {
               No time tracked.
             </Typography>
           </EmptyDay>
-          <Divider />
         </>
       )}
     </Wrapper>

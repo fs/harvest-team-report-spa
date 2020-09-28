@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Divider, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { EmployeeDayTask } from 'config/types';
 
 const Wrapper = styled.article`
@@ -39,7 +39,6 @@ const TaskInDay = ({ taskInDay }: { taskInDay: EmployeeDayTask }) => {
           {taskHours.toFixed(2)}
         </Typography>
       </Wrapper>
-      <Divider />
     </>
   );
 };
