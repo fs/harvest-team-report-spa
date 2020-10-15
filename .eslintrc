@@ -22,6 +22,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "react/require-default-props": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
     "react/jsx-one-expression-per-line": "off",
     "react/prop-types": 0,
