@@ -30,7 +30,7 @@ export const getEmployees = (teamReport: any, users: any) => {
       },
     }));
   const teamCapacity =
-    users.reduce((capacity: number, user: any) => (user.is_active ? user.weekly_capacity + capacity : capacity), 0) /
+    users.reduce((capacity: number, user: any) => (user?.is_active ? user.weekly_capacity + capacity : capacity), 0) /
     capacityDivider;
   const usersById = groupBy(users, 'id');
 
