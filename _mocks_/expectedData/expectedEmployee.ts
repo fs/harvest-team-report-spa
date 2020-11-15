@@ -1,6 +1,7 @@
 export const expectedEmployee = {
   id: 2902328,
   name: 'Renas Sitdikov',
+  archived: false,
   capacity: 40,
   avatarURL:
     'https://proxy.harvestfiles.com/production_harvestapp_public/uploads/users/avatar/002/902/328/ee1e2f89ddc1c7a2bd5252d4b1324de5015709d4/normal.jpg?1577303947',
