@@ -24,9 +24,9 @@ const ListByDays = ({ weekByDays }: { weekByDays: EmployeeDay[] }) => {
   return (
     <Wrapper>
       {weekByDays.map((weekDay, i) => (
-        <Card>
+        <Card key={i}>
           <CardContent>
-            <DayInList weekDay={weekDay} key={i} />
+            <DayInList weekDay={weekDay} />
           </CardContent>
         </Card>
       ))}

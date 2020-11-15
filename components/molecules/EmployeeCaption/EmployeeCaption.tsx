@@ -38,7 +38,7 @@ const Content = styled.div(
 );
 
 const EmployeeCaption = ({ employee }: { employee: EmployeeExtended }) => {
-  const { name, avatarURL, department, email } = employee;
+  const { name, avatarURL, department, email, archived } = employee;
   const avatarSize = '82px';
   const avatarStyles = { width: avatarSize, height: avatarSize };
   return (
@@ -49,7 +49,7 @@ const EmployeeCaption = ({ employee }: { employee: EmployeeExtended }) => {
             <Avatar alt={name} src={avatarURL} variant="rounded" style={avatarStyles} />
             <Content>
               <Typography variant="h5" component="h1">
-                {name}
+                {name} {archived && '(Archived)'}
               </Typography>
               <Typography variant="body1" component="p">
                 {department}

@@ -77,14 +77,15 @@ export default class EmployeesService {
 
   // eslint-disable-next-line class-methods-use-this
   async retrieveAllEmployees(week?: string, year?: string) {
+    const weeksFromToDates = getWeeksFromToDates(week, year);
     try {
       const requests = [
-        retrieve(teamReportURL, this.apiService, getWeeksFromToDates(week, year), 'results'),
+        retrieve(teamReportURL, this.apiService, weeksFromToDates, 'results'),
         retrieve(usersURL, this.apiService),
       ];
       const responses = await Promise.all(requests);
       const [teamReport, users] = responses;
-      return getEmployees(teamReport, users);
+      return getEmployees(teamReport, users, weeksFromToDates);
     } catch (e) {
       console.error(e);
       return { employees: [], teamTotal: teamTotalEmpty };

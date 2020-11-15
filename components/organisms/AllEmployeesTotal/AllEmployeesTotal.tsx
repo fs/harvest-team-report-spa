@@ -18,7 +18,7 @@ const GridWrapper = styled.div`
 `;
 
 const AllEmployeesTotal = ({ teamTotal }: { teamTotal: TeamTotal }) => {
-  const { hoursOnWeek, capacity } = teamTotal;
+  const { hoursOnWeek, capacity, withArchived } = teamTotal;
   const { total, billable } = hoursOnWeek;
   const isExceeded = total > capacity;
   const { colors } = theme;
@@ -39,7 +39,7 @@ const AllEmployeesTotal = ({ teamTotal }: { teamTotal: TeamTotal }) => {
             </div>
             <div>
               <Typography variant="body1" component="p">
-                Team Capacity
+                Team Capacity {withArchived && '(With archived)'}
               </Typography>
               <Typography variant="h5" component="h2">
                 {capacity.toFixed(2)}

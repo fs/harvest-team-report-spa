@@ -23,14 +23,14 @@ const useEmployeesTable = (employees: Employee[], week?: string, year?: string) 
   const avatarSize = '35px';
   const avatarStyles = { width: avatarSize, height: avatarSize, marginRight: '5px' };
   const rows = employees.map(employee => {
-    const { id, name, avatarURL, hoursOnWeek, capacity } = employee;
+    const { id, name, avatarURL, hoursOnWeek, capacity, archived } = employee;
     const { total, billable } = hoursOnWeek;
     return [
       <Link passHref route="employee" params={{ id, week, year }} key={id}>
         <NameContainer>
           <Avatar alt={name} src={avatarURL} variant="rounded" style={avatarStyles} />
-          <Typography variant="body1" component="p">
-            {name}
+          <Typography variant="body1" component="p" color={archived ? 'textSecondary' : 'initial'}>
+            {name} {archived && '(Archived)'}
           </Typography>
         </NameContainer>
       </Link>,

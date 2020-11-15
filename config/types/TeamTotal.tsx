@@ -5,4 +5,5 @@ export interface TeamTotal {
     billable: number;
     nonBillable: number;
   };
+  withArchived: boolean;
 }
