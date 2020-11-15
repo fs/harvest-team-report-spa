@@ -1,11 +1,16 @@
 import groupBy from 'lodash/groupBy';
 import orderBy from 'lodash/orderBy';
+import { parseISO, isAfter } from 'date-fns';
+import { Employee } from '../config/types';
 
 const defaultUser = { weekly_capacity: 0, avatar_url: '' };
 const capacityDivider = 3600;
 
-export const getEmployees = (teamReport: any, users: any) => {
-  const activeUsers = users.filter((user: any) => user?.is_active);
+export const getEmployees = (teamReport: any, users: any, weeksFromToDates: any) => {
+  const isUserActive = (user: any) =>
+    user?.is_active || (!user?.is_active && isAfter(parseISO(user?.updated_at), parseISO(weeksFromToDates.from)));
+
+  const activeUsers = users.filter((user: any) => isUserActive(user));
 
   // todo actually it's array but should be an object
   const teamReportByUserID = Object.entries(groupBy(teamReport, 'user_id')).reduce(
@@ -37,6 +42,7 @@ export const getEmployees = (teamReport: any, users: any) => {
     return {
       name: `${user.first_name} ${user.last_name}`,
       id: user.id,
+      archived: !user.is_active,
       hoursOnWeek: userReport
         ? {
             total: userReport.total_hours,
@@ -48,16 +54,21 @@ export const getEmployees = (teamReport: any, users: any) => {
   });
 
   const teamCapacity =
-    users.reduce((capacity: number, user: any) => (user?.is_active ? user.weekly_capacity + capacity : capacity), 0) /
-    capacityDivider;
+    users.reduce(
+      (capacity: number, user: any) => (isUserActive(user) ? user.weekly_capacity + capacity : capacity),
+      0,
+    ) / capacityDivider;
   const usersById = groupBy(users, 'id');
 
-  const employees = teamReportByUsers.map((item: any) => {
-    const { id } = item;
-    const [user]: any = usersById[id];
-    const { weekly_capacity: wCapacity, avatar_url: avatarURL } = user || defaultUser;
-    return { ...item, avatarURL, capacity: wCapacity / capacityDivider };
-  });
+  const employees = orderBy(
+    teamReportByUsers.map((item: any) => {
+      const { id } = item;
+      const [user]: any = usersById[id];
+      const { weekly_capacity: wCapacity, avatar_url: avatarURL } = user || defaultUser;
+      return { ...item, avatarURL, capacity: wCapacity / capacityDivider };
+    }),
+    'name',
+  );
 
   const hoursOnWeekTotal = employees.reduce(
     (obj: any, item: any) => ({
@@ -72,9 +83,12 @@ export const getEmployees = (teamReport: any, users: any) => {
       nonBillable: 0,
     },
   );
-  const orderedEmployees = orderBy(employees, 'name');
 
-  const teamTotal = { hoursOnWeek: hoursOnWeekTotal, capacity: teamCapacity };
+  const teamTotal = {
+    hoursOnWeek: hoursOnWeekTotal,
+    capacity: teamCapacity,
+    withArchived: employees.some((empl: Employee) => empl.archived),
+  };
 
-  return { employees: orderedEmployees, teamTotal };
+  return { employees, teamTotal };
 };

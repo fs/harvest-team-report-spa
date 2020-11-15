@@ -3,7 +3,15 @@ import orderBy from 'lodash/orderBy';
 import { hsl } from 'polished';
 import { getWeekDaysArray } from './getWeeks';
 
-const defaultUser = { weekly_capacity: 0, avatar_url: '', first_name: '', last_name: '', email: '', roles: [] };
+const defaultUser = {
+  weekly_capacity: 0,
+  avatar_url: '',
+  first_name: '',
+  last_name: '',
+  email: '',
+  roles: [],
+  is_active: true,
+};
 const capacityDivider = 3600;
 const getEntriesHours = (entries: any) =>
   entries.reduce((totalHours: number, entry: any) => totalHours + entry.hours, 0);
@@ -43,8 +51,16 @@ export const getEmployee = (timeEntries: any, user: any, week?: any, year?: any)
       tasksInDay,
     };
   });
-  const { id, weekly_capacity: wCapacity, avatar_url: avatarURL, first_name: fName, last_name: lName, email, roles } =
-    user || defaultUser;
+  const {
+    id,
+    weekly_capacity: wCapacity,
+    avatar_url: avatarURL,
+    first_name: fName,
+    last_name: lName,
+    email,
+    roles,
+    is_active: isActive,
+  } = user || defaultUser;
   const department = roles.join(', ');
   const hoursOnWeek = {
     total: 0,
@@ -63,6 +79,7 @@ export const getEmployee = (timeEntries: any, user: any, week?: any, year?: any)
 
   return {
     id: +id,
+    archived: !isActive,
     email,
     department,
     hoursOnWeek,

@@ -3,6 +3,7 @@ export interface Employee {
   id: number;
   capacity: number;
   avatarURL: string;
+  archived: boolean;
   hoursOnWeek: {
     total: number;
     billable: number;
