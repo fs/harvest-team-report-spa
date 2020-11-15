@@ -35,6 +35,18 @@ export const expectedEmployees = {
         nonBillable: 5,
       },
     },
+    {
+      id: 1403136,
+      name: 'Timur Vafin',
+      capacity: 0,
+      avatarURL:
+        'https://proxy.harvestfiles.com/production_harvestapp_public/uploads/users/avatar/001/403/136/8253a73f50a715581a40eb3f431d133b6e6325af/normal.png?1474982519',
+      hoursOnWeek: {
+        total: 0,
+        billable: 0,
+        nonBillable: 0,
+      },
+    },
   ],
   teamTotal: {
     capacity: 120,

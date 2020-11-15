@@ -24,7 +24,7 @@ const Billable = styled.div<{ width: string; isExceeded: boolean }>(
 
 const HoursProgress = ({ capacity, total, billable }: { capacity: number; total: number; billable: number }) => {
   const isExceeded = total > capacity;
-  const totalWidth = isExceeded ? `100%` : `${(total / capacity) * 100}%`;
+  const totalWidth = isExceeded ? `100%` : `${(total / (capacity || 1)) * 100}%`;
   const billableWidth = `${(billable / total) * 100}%`;
   return (
     <ProgressLineWrapper>

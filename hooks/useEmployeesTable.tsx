@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Avatar, Typography } from '@material-ui/core';
 
-import routes from '../routes';
+import routes from 'routes';
 import { Employee, TableData } from 'config/types';
 import HoursProgress from 'components/atoms/HoursProgress';
 
