@@ -5,7 +5,7 @@ import DefaultTemplate from 'components/templates/DefaultTemplate';
 import EmployeeCaption from 'components/molecules/EmployeeCaption';
 import EmployeeAside from 'components/organisms/EmployeeAside';
 import ListByDays from 'components/organisms/ListByDays';
-import { getService, isClient } from 'utils';
+import { getService } from 'utils';
 
 const ContentWrapper = styled.main(
   ({ theme: { breakpoints, down } }) => css`
@@ -32,9 +32,6 @@ const EmployeePage = ({
   id: string;
 }) => {
   const { weekByDays } = employee;
-  if (isClient) {
-    console.log(window.location);
-  }
   return (
     <DefaultTemplate week={week} year={year} id={id}>
       <ContentWrapper>
