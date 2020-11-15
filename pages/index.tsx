@@ -6,7 +6,7 @@ import DefaultTemplate from 'components/templates/DefaultTemplate';
 import useEmployeesTable from 'hooks/useEmployeesTable';
 import AllEmployeesTotal from 'components/organisms/AllEmployeesTotal';
 import { teamTotalEmpty } from 'public/defaultConstants';
-import { getService } from 'utils';
+import { getService, isClient } from 'utils';
 
 const Home = ({
   teamTotal,
@@ -20,6 +20,9 @@ const Home = ({
   year: string;
 }) => {
   const employeesTableData = useEmployeesTable(employees, week, year);
+  if (isClient) {
+    console.log(window.location);
+  }
   return (
     <DefaultTemplate week={week} year={year}>
       {employees.length > 0 ? (

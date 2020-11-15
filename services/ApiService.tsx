@@ -1,5 +1,6 @@
 import qs from 'qs';
 import axios, { AxiosInstance } from 'axios';
+import { isClient } from '../utils';
 
 export const paramsSerializer = (params: any) => qs.stringify(params);
 
@@ -10,7 +11,7 @@ export default class ApiService {
 
   constructor() {
     this.instance = axios.create({
-      baseURL: process.env.OWN_API_URL,
+      baseURL: isClient ? window.location.origin : process.env.OWN_API_URL,
       paramsSerializer,
     });
 
