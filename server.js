@@ -5,7 +5,7 @@ dotenv.config();
 const next = require('next');
 const routes = require('./routes');
 const express = require('express');
-const secure = require('express-force-https');
+// const secure = require('express-force-https');
 const basicAuth = require('express-basic-auth');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -26,7 +26,7 @@ app
           users: { [process.env.BASIC_AUTH_USER]: process.env.BASIC_AUTH_PASSWORD },
         }),
       )
-      .use(secure)
+      // .use(secure)
       .use(handle)
       .listen(port);
   })
